@@ -1,4 +1,4 @@
-package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
+package de.fhdw.gruppe2.quizapp.android.activity_menu;
 
 import android.content.Intent;
 import android.os.Bundle;

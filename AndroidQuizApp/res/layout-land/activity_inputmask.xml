@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="de.fhdw.gruppe2.quizapp.android.MainActivity" >
+
+    <EditText
+        android:id="@+id/intputmask_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/inputmask_edittext_hint_text"
+        android:inputType="numberSigned"
+        android:maxLength="20"
+        android:padding="@dimen/inputmask_edittext_padding" >
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/inputmask_button_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intputmask_edittext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp"
+        android:text="@string/inputmask_button_confirm_text" />
+		
+</RelativeLayout>
