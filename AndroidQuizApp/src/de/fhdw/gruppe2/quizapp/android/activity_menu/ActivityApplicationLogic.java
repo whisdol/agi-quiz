@@ -1,4 +1,4 @@
-package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
+package de.fhdw.gruppe2.quizapp.android.activity_menu;
 
 
 public class ActivityApplicationLogic {
@@ -20,15 +20,21 @@ public class ActivityApplicationLogic {
 	
 	// event handling
 	
-	public void onConfirmButtonClicked() {
+	public void onQuestionsButtonClicked() {
+		
+		
+	}
+	
+	public void onStatisticsButtonClicked() {
 		
 		
 	}
 
-	public void onEditTextChanged() {
-		// TODO Auto-generated method stub
-		
+	public void onScoreboardButtonClicked() {
+	
+	
 	}
+
 	
 
 
