@@ -10,5 +10,7 @@
     <string name="menu_button_questions">Start quiz</string>
     <string name="menu_button_statistics">Show statistics</string>
     <string name="menu_button_scoreboard">Show scoreboard</string>
+    <string name="question_button_continue">Weiter</string>
+    <string name="question_button_exit">Beenden</string>
 
 </resources>

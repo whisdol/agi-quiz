@@ -1,5 +1,8 @@
 package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
 
+import android.content.Intent;
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+
 
 public class ActivityApplicationLogic {
 
@@ -21,7 +24,10 @@ public class ActivityApplicationLogic {
 	// event handling
 	
 	public void onConfirmButtonClicked() {
-		
+		Intent intent;
+		intent = new Intent();
+		intent.setClass(mData.getActivity(), Constants.ACTIVITYMENUCLASS);
+		mData.getActivity().startActivityForResult(intent, Constants.REQUESTCODEVALUE);
 		
 	}
 

@@ -25,14 +25,26 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
         public static final int inputmask_edittext_padding=0x7f050002;
         public static final int menu_align_button=0x7f050003;
+        public static final int min_button_height=0x7f050005;
+        public static final int min_button_width=0x7f050006;
+        public static final int question_text_size=0x7f050004;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090005;
+        public static final int action_settings=0x7f09000e;
+        public static final int answer_button_0=0x7f090007;
+        public static final int answer_button_1=0x7f090008;
+        public static final int answer_button_2=0x7f090009;
+        public static final int answer_button_3=0x7f09000a;
+        public static final int continue_button=0x7f09000b;
+        public static final int exit_button=0x7f09000c;
         public static final int inputmask_button_confirm=0x7f090001;
         public static final int intputmask_edittext=0x7f090000;
+        public static final int linearLayout1=0x7f090006;
+        public static final int nextquestion_button=0x7f09000d;
+        public static final int question_textview=0x7f090005;
         public static final int questions_button=0x7f090002;
         public static final int scoreboard_button=0x7f090004;
         public static final int statistics_button=0x7f090003;
@@ -40,6 +52,7 @@ public final class R {
     public static final class layout {
         public static final int activity_inputmask=0x7f030000;
         public static final int activity_menu=0x7f030001;
+        public static final int activity_questionno1=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -53,6 +66,8 @@ public final class R {
         public static final int menu_button_questions=0x7f060006;
         public static final int menu_button_scoreboard=0x7f060008;
         public static final int menu_button_statistics=0x7f060007;
+        public static final int question_button_continue=0x7f060009;
+        public static final int question_button_exit=0x7f06000a;
         public static final int title_activity_main=0x7f060003;
     }
     public static final class style {

@@ -11,7 +11,7 @@ public class ActivityGUI {
 	
 
 	public ActivityGUI(ActivityInit act) {
-		act.setContentView(R.layout.activity_inputmask);
+		act.setContentView(R.layout.activity_menu);
 		mQuestionsButton = (Button) act.findViewById(R.id.questions_button);
 		mStatisticsButton = (Button) act.findViewById(R.id.statistics_button);
 		mScoreboardButton = (Button) act.findViewById(R.id.scoreboard_button);

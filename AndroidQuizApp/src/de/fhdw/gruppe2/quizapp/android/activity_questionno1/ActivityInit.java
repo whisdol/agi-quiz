@@ -1,4 +1,4 @@
-package de.fhdw.gruppe2.quizapp.android.activity_menu;
+package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.app.Activity;
 import android.os.Bundle;
