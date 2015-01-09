@@ -7,9 +7,9 @@ public class QuestionDataNumeric extends QuestionData {
 	private float mDeviation;
 	private boolean mDeviationIsPercent;
 
-	public QuestionDataNumeric(String pQuestion, List<String> pAnswers,
+	public QuestionDataNumeric(int pID, String pQuestion, List<String> pAnswers,
 			int pCorrectAnswer, float pDeviation, boolean pDeviationIsPercent) {
-		super(pQuestion, pAnswers, pCorrectAnswer);
+		super(pID, pQuestion, pAnswers, pCorrectAnswer);
 		mDeviation = pDeviation;
 		mDeviationIsPercent = pDeviationIsPercent;
 		
