@@ -1,3 +1,4 @@
+//Creator Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
 
 import android.content.Intent;

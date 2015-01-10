@@ -21,35 +21,28 @@ public class ActivityEventToListenerMapping implements OnClickListener {
 		
 	}
 
-	
-	public void onClickAnswer0(View v) {
-		mApplicationLogic.onAnswer0ButtonClicked();	
-	}
-	
-	public void onClickAnswer1(View v) {
-		mApplicationLogic.onAnswer1ButtonClicked();	
-	}
-	
-	public void onClickAnswer2(View v) {
-		mApplicationLogic.onAnswer2ButtonClicked();	
-	}
-	
-	public void onClickAnswer3(View v) {
-		mApplicationLogic.onAnswer3ButtonClicked();	
-	}
-	
-	public void onClickContinue(View v) {
-		mApplicationLogic.onContinueButtonClicked();	
-	}
-	
-	public void onClickExit(View v) {
-		mApplicationLogic.onExitButtonClicked();	
-	}
-
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		if(mGUI.getmAnswerButton0().getId() == v.getId())
+		{
+			mApplicationLogic.onAnswer0ButtonClicked();
+		}else if(mGUI.getmAnswerButton1().getId() == v.getId())
+		{
+			mApplicationLogic.onAnswer1ButtonClicked();	
+		}else if(mGUI.getmAnswerButton2().getId() == v.getId())
+		{
+			mApplicationLogic.onAnswer2ButtonClicked();
+		}else if(mGUI.getmAnswerButton3().getId() == v.getId())
+		{
+			mApplicationLogic.onAnswer3ButtonClicked();
+		}else if(mGUI.getmContinueButton().getId() == v.getId())
+		{
+			mApplicationLogic.onContinueButtonClicked();
+		}else if(mGUI.getmExitButton().getId() == v.getId())
+		{
+			mApplicationLogic.onExitButtonClicked();
+		}
 	}
 
 	

@@ -10,20 +10,23 @@ public abstract class QuestionData /* implements Parcelable */ {
 	private String mQuestion;
 	private List<String> mAnswers;
 	private int mCorrectAnswer;
+	private int mTime;
 	
 	
-	public QuestionData(int pID, String pQuestion, List<String> pAnswers, int pCorrectAnswer){
+	public QuestionData(int pID, String pQuestion, List<String> pAnswers, int pCorrectAnswer,int pTime){
 		mID = pID;
 		mQuestion = pQuestion;
 		mAnswers = pAnswers;
 		mCorrectAnswer = pCorrectAnswer;
+		mTime = pTime;
 	}
 	
-	public QuestionData(int pID, String pQuestion, String[] pAnswers, int pCorrectAnswer){
+	public QuestionData(int pID, String pQuestion, String[] pAnswers, int pCorrectAnswer,int pTime){
 		mID = pID;
 		mQuestion = pQuestion;
 		mAnswers = Arrays.asList(pAnswers);
 		mCorrectAnswer = pCorrectAnswer;
+		mTime = pTime;
 	}
 	
 	public int getID(){

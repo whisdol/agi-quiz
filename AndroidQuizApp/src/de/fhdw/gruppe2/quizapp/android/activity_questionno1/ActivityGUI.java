@@ -1,6 +1,7 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.widget.Button;
+import android.widget.TextView;
 import de.fhdw.gruppe2.quizapp.android.R;
 
 public class ActivityGUI {
@@ -11,6 +12,7 @@ public class ActivityGUI {
 	private Button mAnswerButton3;
 	private Button mContinueButton;
 	private Button mExitButton;
+	private TextView mQuestionTextView;
 	
 	public ActivityGUI(ActivityInit act) {
 		act.setContentView(R.layout.activity_questionno1);
@@ -20,6 +22,7 @@ public class ActivityGUI {
 		mAnswerButton3 = (Button) act.findViewById(R.id.answer_button_3);
 		mContinueButton = (Button) act.findViewById(R.id.continue_button);
 		mExitButton = (Button) act.findViewById(R.id.exit_button);
+		mQuestionTextView = (TextView) act.findViewById(R.id.question_textview);
 	}
 
 	// getter to access views
@@ -46,5 +49,20 @@ public class ActivityGUI {
 	public Button getmExitButton() {
 		return mExitButton;
 	}
+	
+	public TextView getmQuestionTextView() {
+		return mQuestionTextView;
+	}
+
+	public void setmQuestionTextView(TextView mQuestionTextView) {
+		this.mQuestionTextView = mQuestionTextView;
+	}
+	
+	public void changeButtonColor(Button pButton,int pColor)
+	{
+		pButton.setBackgroundColor(pColor);
+	}
+
+	
 	
 }
