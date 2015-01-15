@@ -12,5 +12,6 @@
     <string name="menu_button_scoreboard">Show scoreboard</string>
     <string name="question_button_continue">Weiter</string>
     <string name="question_button_exit">Beenden</string>
+    <string name="title_activity_statistics">Statistik</string>
 
 </resources>
