@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="de.fhdw.gruppe2.quizapp.android.MainActivity" >
+
+    <TextView
+        android:id="@+id/question_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Frage"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/continue_button"
+        android:layout_alignStart="@+id/exit_button"
+        android:layout_alignEnd="@+id/continue_button"
+        android:layout_below="@+id/question_textview"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin" >
+	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/textView_min"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="0"
+	                android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBar_answer_slider"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1" />
+	
+	            <TextView
+	                android:id="@+id/textView_max"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="2000"
+	                android:textAppearance="?android:attr/textAppearanceSmall" />
+	            
+	        </LinearLayout>
+	
+	        <EditText
+	            android:id="@+id/editText_seekBar_value"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:ems="10"
+	            android:inputType="number" 
+	            android:hint="10000"/>
+	
+	    </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/question_button_continue" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/question_button_exit" />
+
+</RelativeLayout>
