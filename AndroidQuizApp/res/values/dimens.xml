@@ -9,4 +9,5 @@
 	<dimen name="min_button_height">100dp</dimen>
 	<dimen name="min_button_width">100dp</dimen>
 	<dimen name="activity_questionno2_land_margin">7dp</dimen>
+	<dimen name="image_size">100dp</dimen>
 </resources>
