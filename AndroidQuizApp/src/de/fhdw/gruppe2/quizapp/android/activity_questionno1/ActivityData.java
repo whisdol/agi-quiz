@@ -6,6 +6,8 @@ public class ActivityData {
 	private int mSelectedAnswer;
 
 	private ActivityInit mActivity;
+	private int mSessionID;
+	private int mQuestionID;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mSelectedAnswer = -1;
@@ -13,6 +15,13 @@ public class ActivityData {
 	}
 	
 	// getter
+	
+	public int getmQuestionID() {
+		return mQuestionID;
+	}
+	public int getmSessionID() {
+		return mSessionID;
+	}
 	
 	public ActivityInit getActivity() {
 		return mActivity;
@@ -23,6 +32,16 @@ public class ActivityData {
 	}
 
 	//setter
+	
+	public void setmSessionID(int mSessionID) {
+		this.mSessionID = mSessionID;
+	}
+
+
+
+	public void setmQuestionID(int mQuestionID) {
+		this.mQuestionID = mQuestionID;
+	}
 	
 	public int setmSelectedAnswer(int mSelectedAnswer) {
 		if(mSelectedAnswer == this.mSelectedAnswer)
