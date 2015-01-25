@@ -1,5 +1,5 @@
 // @author Cedric Lüke
-package de.fhdw.gruppe2.quizapp.android.activity_question_numeric;
+package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import android.content.Context;
 import android.widget.Button;
@@ -19,7 +19,7 @@ public class ActivityGUI {
 	private TextView mQuestionTextView;
 	
 	public ActivityGUI(ActivityInit act) {
-		act.setContentView(R.layout.activity_question_numeric);
+		act.setContentView(R.layout.activity_questionno4);
 		mMinValue = (TextView) act.findViewById(R.id.textView_min);
 		mMaxValue = (TextView) act.findViewById(R.id.textView_max);
 		mSeekBarValueEditText = (EditText) act.findViewById(R.id.editText_seekBar_value);
