@@ -143,9 +143,11 @@ public class DatabaseConnection
         String sUserId = "";
         try
         {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse("http://a-o-w.lima-city.de/QuizApp/GetUser.php?userName=" + pUser);
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/GetUser.php?userName=" + pUser);
+            parsedXMLobj.fetchXML();
+            while(parsedXMLobj.isParsingStillRunning());
+            document = parsedXMLobj.getmParsedDocument();
             
             XPathFactory xpathFactory = XPathFactory.newInstance();
             XPath xpath = xpathFactory.newXPath();
@@ -166,9 +168,11 @@ public class DatabaseConnection
         String sUserId = "";
         try
         {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse("http://a-o-w.lima-city.de/QuizApp/GetSession.php?userID=" + pUserID);
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/GetSession.php?userID=" + pUserID);
+            parsedXMLobj.fetchXML();
+            while(parsedXMLobj.isParsingStillRunning());
+            document = parsedXMLobj.getmParsedDocument();
             
             XPathFactory xpathFactory = XPathFactory.newInstance();
             XPath xpath = xpathFactory.newXPath();
@@ -190,9 +194,9 @@ public class DatabaseConnection
     	String sUserId = "";
         try
         {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse("http://a-o-w.lima-city.de/QuizApp/UpdateSessionFrage.php?sessionID=" + pSessionID + "&fragenID=" + pFragenID + "&richtig=" + pRichtig + "&antwort=" + pAntwort );
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/UpdateSessionFrage.php?sessionID=" + pSessionID + "&fragenID=" + pFragenID + "&richtig=" + pRichtig + "&antwort=" + pAntwort );
+            parsedXMLobj.fetchXML();
             
             //XPathFactory xpathFactory = XPathFactory.newInstance();
             //XPath xpath = xpathFactory.newXPath();
