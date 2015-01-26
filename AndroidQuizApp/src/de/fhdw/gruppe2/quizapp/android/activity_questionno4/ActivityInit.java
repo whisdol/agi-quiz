@@ -1,5 +1,5 @@
 // @author Cedric Lüke
-package de.fhdw.gruppe2.quizapp.android.activity_question_numeric;
+package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import android.app.Activity;
 import android.content.Context;
