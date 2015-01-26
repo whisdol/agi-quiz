@@ -3,8 +3,11 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import java.util.Arrays;
 
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
+import android.app.Activity;
+import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +21,7 @@ public class ActivityApplicationLogic {
 		this.mData = mData;
 		this.mGUI = mGUI;
 		//TODO: get question id from bundle
-		mData.setmQuestion((QuestionDataNumeric) DatabaseConnection.getFrage(3));
+		mData.setmQuestion((QuestionDataNumeric) DatabaseConnection.getFrage(mData.getmQuestionId()));
 		setUpLayout();
 	}
 	
@@ -71,21 +74,40 @@ public class ActivityApplicationLogic {
 		this.mData.setmSeekBarValue(calculateSeekBarValueFromEditTextValue(intValue));
 		applyEditTextValueToSeekBar();
 	}
+	
+	
+	private void defineActivityReturnValues(boolean correct, boolean continueOrExit){
+        Intent intent;
+        intent = new Intent();
+        intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
+        intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
+        mData.getActivity().setResult(Activity.RESULT_OK, intent);
+	}
+	
+	private boolean evaluateAnswers(){
+		String answerstring;
+		boolean correct;
+		if (mData.getmQuestion().isCorrectAnswer(mData.getmSeekBarValue() + mData.getmQuestion().getmMinValue())){
+			answerstring = "Richtig!";
+			correct = true;
+		} else {
+			answerstring = "Falsch!";
+			correct = false;
+		}
+		Toast.makeText(mData.getActivity().getContext(), answerstring, Toast.LENGTH_SHORT).show();
+		return correct;
+	}
 
 
 	public void onContinueButtonClicked() {
-		// TODO Replace with real code
-		String answerstring;
-		if (mData.getmQuestion().isCorrectAnswer(mData.getmSeekBarValue() + mData.getmQuestion().getmMinValue())){
-			answerstring = "Richtig!";
-		} else {
-			answerstring = "Falsch!";
-		}
-		Toast.makeText(mData.getActivity().getContext(), answerstring, Toast.LENGTH_SHORT).show();		
+		boolean correct = evaluateAnswers();
+		defineActivityReturnValues(correct, true);
+		mData.getActivity().finish();
 	}
 
 	public void onExitButtonClicked() {
-		// TODO Auto-generated method stub
-		
+		boolean correct = evaluateAnswers();
+		defineActivityReturnValues(correct, false);
+		mData.getActivity().finish();	
 	}
 }
