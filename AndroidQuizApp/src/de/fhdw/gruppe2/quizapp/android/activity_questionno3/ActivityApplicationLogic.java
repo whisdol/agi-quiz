@@ -1,5 +1,6 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
+import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
 import android.graphics.Color;
 
@@ -15,6 +16,7 @@ public class ActivityApplicationLogic {
 		applyDataToGUI();
 		//QuestionDataSingleAnswer question = DB.GetQuestion(mData.getIdQuestion());
 		setUpLayout(new QuestionDataSingleAnswer(0, null, null, 0, 0));
+		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionID())).start();
 	}
 
 	private void applyDataToGUI() {

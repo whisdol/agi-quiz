@@ -2,6 +2,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import de.fhdw.gruppe2.quizapp.android.R;
 
@@ -14,7 +15,8 @@ public class ActivityGUI {
 	private Button mContinueButton;
 	private Button mExitButton;
 	private TextView mQuestionTextView;
-	private ImageView mImageQuestionView;
+	//private ImageView mImageQuestionView;
+	private ProgressBar mBar;
 	
 	public ActivityGUI(ActivityInit act) {
 		act.setContentView(R.layout.activity_questionno1);
@@ -25,7 +27,8 @@ public class ActivityGUI {
 		mContinueButton = (Button) act.findViewById(R.id.continue_button);
 		mExitButton = (Button) act.findViewById(R.id.exit_button);
 		mQuestionTextView = (TextView) act.findViewById(R.id.question_textview);
-		mImageQuestionView = (ImageView) act.findViewById(R.id.question_imageview);
+		//mImageQuestionView = (ImageView) act.findViewById(R.id.question_imageview);
+		mBar = (ProgressBar) act.findViewById(R.id.progressBar1);
 	}
 
 	// getter to access views
@@ -64,6 +67,14 @@ public class ActivityGUI {
 	public void changeButtonColor(Button pButton,int pColor)
 	{
 		pButton.setBackgroundColor(pColor);
+	}
+
+	public ProgressBar getmBar() {
+		return mBar;
+	}
+
+	public void setmBar(ProgressBar mBar) {
+		this.mBar = mBar;
 	}
 
 	

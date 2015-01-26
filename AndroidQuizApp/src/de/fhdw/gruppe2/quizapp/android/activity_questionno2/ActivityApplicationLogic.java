@@ -3,6 +3,7 @@
  */
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
+import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 
 
@@ -17,6 +18,7 @@ public class ActivityApplicationLogic {
 		applyDataToGUI();
 		//QuestionDataMultipleAnswer question = DB.GetQuestion(mData.getIdQuestion());
 		setUpLayout(new QuestionDataMultipleAnswer(0, null, null, 0, 0));
+		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionID())).start();
 	}
 
 	private void applyDataToGUI() {
