@@ -14,8 +14,10 @@ import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 
+import de.fhdw.gruppe2.quizapp.android.questiondata.AnswerData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
 
 
 public class DatabaseConnection
@@ -51,22 +53,22 @@ public class DatabaseConnection
     
     public static QuestionData getFrage(int idFrage)
     {
+    	//TODO: Cleanup
+    	System.out.println("QuestionData getFrage called");
         String sFragenID = "";
         String sFragenText = "";
         String sRichtig = "";
         String sZeit = "";
         String sFragenTyp = "";
         int i = 0;
-        List<String> lAntworten = new ArrayList<String>();
-        //String sUrl = "http://a-o-w.lima-city.de/QuizApp/GetFrage.php?fragenID=" + idFrage;
-        //String sUrl = "http://a-o-w.lima-city.de/Rezept/";
-        //String sXML = getXMLString(sUrl);
-        //System.out.println("\u00D6");
+        List<AnswerData> lAntworten = new ArrayList<AnswerData>();
         try
         {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse("http://a-o-w.lima-city.de/QuizApp/GetFrage.php?fragenID=" + idFrage);
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/GetFrage.php?fragenID=" + idFrage);
+            parsedXMLobj.fetchXML();
+            while(parsedXMLobj.isParsingStillRunning());
+            document = parsedXMLobj.getmParsedDocument();
             
             XPathFactory xpathFactory = XPathFactory.newInstance();
             XPath xpath = xpathFactory.newXPath();
@@ -79,8 +81,7 @@ public class DatabaseConnection
             String tempRichtig = xpath.evaluate("/fragen_info/antworten/Antwort0/richtig", document);
             while(tempAntwort != "")
             {
-                sRichtig += tempRichtig;
-                lAntworten.add(tempAntwort);
+                lAntworten.add(new AnswerData(tempRichtig, tempAntwort));
                 i++;
                 tempAntwort = xpath.evaluate("/fragen_info/antworten/Antwort" + i + "/antwortText", document);
                 tempRichtig = xpath.evaluate("/fragen_info/antworten/Antwort" + i + "/richtig", document);
@@ -89,14 +90,52 @@ public class DatabaseConnection
         }catch(Exception e)
         {
             System.out.println(e);
+            e.printStackTrace(System.out);
             return null;
         }
         for(int a = 0; a<lAntworten.size(); a++)
         {
-            System.out.println(lAntworten.get(a));
+            System.out.println(lAntworten.get(a).getmText());
         }
         System.out.println("Frage: " + sFragenID + " " +sFragenText+ " " +sRichtig+ " " +sZeit + " " + sFragenTyp);
-        return new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
+        
+        int iFragenID = convertToInt(sFragenID, -1);
+        int iZeit = convertToInt(sZeit, 0);
+        int iFragenTyp = convertToInt(sFragenTyp, 1);
+        
+        
+        QuestionData questionObj;
+        questionObj = null;
+        
+        switch(iFragenTyp){
+        case 1:
+        	//questionObj = new QuestionDataSingleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
+            break;
+        case 2:
+        	//questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
+            break;
+        case 3:
+            break;
+        case 4:
+            questionObj = new QuestionDataNumeric(iFragenID, sFragenText, lAntworten, iZeit);
+            break;
+        case 5:
+            break;     	
+        }
+        
+        return questionObj;
+    }
+    
+    private static int convertToInt(String sToInt, int defaultValue){
+    	//TODO: eventuell auslagern
+    	int iRet;
+    	try {
+    		iRet = Integer.parseInt(sToInt);
+    	} catch (Exception e) {
+    		iRet = defaultValue;
+    	}
+    	
+    	return iRet;
     }
     
     public static int getUser(String pUser)
