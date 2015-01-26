@@ -44,7 +44,7 @@ public class QuestionDataNumeric extends QuestionData {
 				if (curAnswer.getmText() == "absolute"){
 					mDeviationIsPercent = false;
 				} else { // == "percent"
-					mDeviationIsPercent = false;
+					mDeviationIsPercent = true;
 				}
 				break;
 			default:
