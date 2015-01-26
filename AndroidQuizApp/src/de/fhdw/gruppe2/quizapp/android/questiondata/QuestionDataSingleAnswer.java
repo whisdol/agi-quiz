@@ -3,7 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.questiondata;
 import java.util.List;
 
 public class QuestionDataSingleAnswer extends QuestionData {
-	public QuestionDataSingleAnswer(int pID, String pQuestion, List<String> pAnswers,
+	public QuestionDataSingleAnswer(int pID, String pQuestion, List<AnswerData> pAnswers,
 			int pCorrectAnswer,int pTime) {
 		super(pID, pQuestion, pAnswers, pCorrectAnswer,pTime);
 	}

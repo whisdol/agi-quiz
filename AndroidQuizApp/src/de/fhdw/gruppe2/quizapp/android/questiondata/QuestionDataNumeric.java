@@ -2,6 +2,7 @@
 package de.fhdw.gruppe2.quizapp.android.questiondata;
 
 import java.util.List;
+import java.util.Set;
 
 public class QuestionDataNumeric extends QuestionData {
 	
@@ -12,14 +13,44 @@ public class QuestionDataNumeric extends QuestionData {
 
 	private int mMaxValue;
 
-	public QuestionDataNumeric(int pID, String pQuestion, List<String> pAnswers,
+	public QuestionDataNumeric(int pID, String pQuestion, List<AnswerData> pAnswers,
 			int pCorrectAnswer, float pDeviation, boolean pDeviationIsPercent,int pTime, int pMinValue, int pMaxValue) {
 		super(pID, pQuestion, pAnswers, pCorrectAnswer,pTime);
 		mDeviation = pDeviation;
 		mDeviationIsPercent = pDeviationIsPercent;
 		mMinValue = pMinValue;
 		mMaxValue = pMaxValue;
-		
+	}
+	
+	public QuestionDataNumeric(int pID, String pQuestion, List<AnswerData> pAnswers, int pTime){
+		// TODO: Check if all values have been initialized
+		super(pID, pQuestion, pAnswers, 0,pTime);
+		for (int i = 0; i < pAnswers.size(); i++){
+			AnswerData curAnswer = pAnswers.get(i);
+			switch (curAnswer.getmRichtig()){
+			case 1:
+				mMinValue = Integer.parseInt(curAnswer.getmText());
+				break;
+			case 2:
+				mMaxValue = Integer.parseInt(curAnswer.getmText());
+				break;
+			case 3:
+				this.setmCorrectAnswer(Integer.parseInt(curAnswer.getmText()));
+				break;
+			case 4:
+				mDeviation = Float.parseFloat(curAnswer.getmText());
+				break;
+			case 5:
+				if (curAnswer.getmText() == "absolute"){
+					mDeviationIsPercent = false;
+				} else { // == "percent"
+					mDeviationIsPercent = false;
+				}
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	@Override
