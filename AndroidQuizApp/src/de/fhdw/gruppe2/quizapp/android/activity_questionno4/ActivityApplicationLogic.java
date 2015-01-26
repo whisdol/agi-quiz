@@ -3,6 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import java.util.Arrays;
 
+import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,9 +17,8 @@ public class ActivityApplicationLogic {
 	public ActivityApplicationLogic(ActivityData mData, ActivityGUI mGUI) {
 		this.mData = mData;
 		this.mGUI = mGUI;
-		//mData.setmQuestion(DB.GetQuestion(mData.getIdQuestion()));
-		//mData.setmQuestion(new QuestionDataNumeric(0, null, null, 0, 0, false, 0, 0, 0));
-		mData.setmQuestion(new QuestionDataNumeric(0, "Wann kam Hitler an die Macht?", Arrays.asList(""), 1933, 0, false, 0, 1900, 1950));
+		//TODO: get question id from bundle
+		mData.setmQuestion((QuestionDataNumeric) DatabaseConnection.getFrage(3));
 		setUpLayout();
 	}
 	
