@@ -1,6 +1,7 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 public class ActivityInit extends Activity {
@@ -32,6 +33,10 @@ public class ActivityInit extends Activity {
 	
 	private void initEventToListenerMapping() {
 		new ActivityEventToListenerMapping(mGUI, mApplicationLogic);
+	}
+	
+	public Context getContext(){
+		return this;
 	}
 	
 }

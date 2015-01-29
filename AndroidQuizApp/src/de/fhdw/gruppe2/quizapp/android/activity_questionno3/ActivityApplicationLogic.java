@@ -1,8 +1,16 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import de.fhdw.gruppe2.quizapp.android.Task.Task;
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.widget.Toast;
 
 
 public class ActivityApplicationLogic {
@@ -13,9 +21,10 @@ public class ActivityApplicationLogic {
 	public ActivityApplicationLogic(ActivityData mData, ActivityGUI mGUI) {
 		this.mData = mData;
 		this.mGUI = mGUI;
+		
+		mData.setQuestion((QuestionDataWithPicture) DatabaseConnection.getFrage(mData.getmQuestionID()));
 		applyDataToGUI();
-		//QuestionDataSingleAnswer question = DB.GetQuestion(mData.getIdQuestion());
-		setUpLayout(new QuestionDataSingleAnswer(0, null, null, 0, 0));
+		setUpLayout();
 		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionID())).start();
 	}
 
@@ -26,13 +35,15 @@ public class ActivityApplicationLogic {
 		this.mGUI.changeButtonColor(this.mGUI.getmAnswerButton0(),Color.GRAY);
 	}
 	
-	private void setUpLayout(QuestionDataSingleAnswer pData)
+	private void setUpLayout()
 	{
-		this.mGUI.getmQuestionTextView().setText(pData.getQuestion());
-		this.mGUI.getmAnswerButton0().setText(pData.getAnswers().get(0));
-		this.mGUI.getmAnswerButton1().setText(pData.getAnswers().get(1));
-		this.mGUI.getmAnswerButton2().setText(pData.getAnswers().get(2));
-		this.mGUI.getmAnswerButton3().setText(pData.getAnswers().get(3));
+		QuestionDataWithPicture q = this.mData.getQuestion();
+		this.mGUI.getmQuestionTextView().setText(q.getQuestion());
+		this.mGUI.getmAnswerButton0().setText(q.getAnswers().get(0));
+		this.mGUI.getmAnswerButton1().setText(q.getAnswers().get(1));
+		this.mGUI.getmAnswerButton2().setText(q.getAnswers().get(2));
+		this.mGUI.getmAnswerButton3().setText(q.getAnswers().get(3));
+		//set Image 
 	}
 	
 	// event handling
@@ -64,15 +75,39 @@ public class ActivityApplicationLogic {
 		this.mGUI.changeButtonColor(this.mGUI.getmAnswerButton3(),Color.BLUE);
 		
 	}
+	
+	private boolean evaluateAnswers(){
+		String answerstring;
+		boolean correct;
+		if (mData.getQuestion().isCorrectAnswer(mData.getmSelectedAnswer())){
+			answerstring = "Richtig!";
+			correct = true;
+		} else {
+			answerstring = "Falsch!";
+			correct = false;
+		}
+		Toast.makeText(mData.getActivity().getContext(), answerstring, Toast.LENGTH_SHORT).show();
+		return correct;
+	}
+	
+	private void defineActivityReturnValues(boolean correct, boolean continueOrExit){
+        Intent intent;
+        intent = new Intent();
+        intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
+        intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
+        mData.getActivity().setResult(Activity.RESULT_OK, intent);
+	}
 
 	public void onContinueButtonClicked() {
-		// TODO Auto-generated method stub
-		
+		boolean correct = evaluateAnswers();
+		defineActivityReturnValues(correct, true);
+		mData.getActivity().finish();
 	}
 
 	public void onExitButtonClicked() {
-		// TODO Auto-generated method stub
-		
+		boolean correct = evaluateAnswers();
+		defineActivityReturnValues(correct, false);
+		mData.getActivity().finish();	
 	}
 
 	

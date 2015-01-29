@@ -15,7 +15,7 @@ public class ActivityGUI {
 	private Button mContinueButton;
 	private Button mExitButton;
 	private TextView mQuestionTextView;
-	//private ImageView mImageQuestionView;
+	private ImageView mImageQuestionView;
 	private ProgressBar mBar;
 	
 	public ActivityGUI(ActivityInit act) {
@@ -27,7 +27,7 @@ public class ActivityGUI {
 		mContinueButton = (Button) act.findViewById(R.id.continue_button);
 		mExitButton = (Button) act.findViewById(R.id.exit_button);
 		mQuestionTextView = (TextView) act.findViewById(R.id.question_textview);
-		//mImageQuestionView = (ImageView) act.findViewById(R.id.question_imageview);
+		setmImageQuestionView((ImageView) act.findViewById(R.id.question_imageview));
 		mBar = (ProgressBar) act.findViewById(R.id.progressBar1);
 	}
 
@@ -75,6 +75,14 @@ public class ActivityGUI {
 
 	public void setmBar(ProgressBar mBar) {
 		this.mBar = mBar;
+	}
+
+	public ImageView getmImageQuestionView() {
+		return mImageQuestionView;
+	}
+
+	public void setmImageQuestionView(ImageView mImageQuestionView) {
+		this.mImageQuestionView = mImageQuestionView;
 	}
 
 	

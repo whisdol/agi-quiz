@@ -18,6 +18,7 @@ import de.fhdw.gruppe2.quizapp.android.questiondata.AnswerData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 
 
 public class DatabaseConnection
@@ -60,6 +61,7 @@ public class DatabaseConnection
         String sRichtig = "";
         String sZeit = "";
         String sFragenTyp = "";
+        String sPicturePath = "";
         int i = 0;
         List<AnswerData> lAntworten = new ArrayList<AnswerData>();
         try
@@ -79,6 +81,7 @@ public class DatabaseConnection
             sFragenTyp = xpath.evaluate("/fragen_info/frageTyp", document);
             String tempAntwort = xpath.evaluate("/fragen_info/antworten/Antwort0/antwortText", document);
             String tempRichtig = xpath.evaluate("/fragen_info/antworten/Antwort0/richtig", document);
+            sPicturePath = xpath.evaluate("/fragen_info/bildPfad", document);
             while(tempAntwort != "")
             {
                 lAntworten.add(new AnswerData(tempRichtig, tempAntwort));
@@ -103,7 +106,6 @@ public class DatabaseConnection
         int iZeit = convertToInt(sZeit, 0);
         int iFragenTyp = convertToInt(sFragenTyp, 1);
         
-        
         QuestionData questionObj;
         questionObj = null;
         
@@ -115,6 +117,7 @@ public class DatabaseConnection
         	//questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
             break;
         case 3:
+        	questionObj = new QuestionDataWithPicture(iFragenID, sFragenText, lAntworten, iZeit,convertToInt(sRichtig,0),sPicturePath);
             break;
         case 4:
             questionObj = new QuestionDataNumeric(iFragenID, sFragenText, lAntworten, iZeit);

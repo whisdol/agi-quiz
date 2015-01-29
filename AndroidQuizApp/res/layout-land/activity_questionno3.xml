@@ -28,14 +28,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:layout_weight="6"
-            android:layout_gravity="fill_vertical">
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:layout_weight="6" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:minWidth="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -43,9 +45,9 @@
 
                     <Button
                         android:id="@+id/answer_button_0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="@dimen/q3_landscape_min_button_width"
+                        android:layout_height="@dimen/q3_landscape_min_button_height"
+                        android:layout_marginTop="0dp"
                         android:minHeight="@dimen/q3_landscape_min_button_height"
                         android:minWidth="@dimen/q3_landscape_min_button_width"
                         android:text="Antwort1"
@@ -53,9 +55,9 @@
 
                     <Button
                         android:id="@+id/answer_button_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="@dimen/q3_landscape_min_button_width"
+                        android:layout_height="@dimen/q3_landscape_min_button_height"
+                        android:layout_marginTop="0dp"
                         android:minHeight="@dimen/q3_landscape_min_button_height"
                         android:minWidth="@dimen/q3_landscape_min_button_width"
                         android:text="Antwort2"
@@ -68,9 +70,9 @@
 
                     <Button
                         android:id="@+id/answer_button_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="@dimen/q3_landscape_min_button_width"
+                        android:layout_height="@dimen/q3_landscape_min_button_height"
+                        android:layout_marginTop="0dp"
                         android:minHeight="@dimen/q3_landscape_min_button_height"
                         android:minWidth="@dimen/q3_landscape_min_button_width"
                         android:text="Antwort3"
@@ -78,9 +80,9 @@
 
                     <Button
                         android:id="@+id/answer_button_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="@dimen/q3_landscape_min_button_width"
+                        android:layout_height="@dimen/q3_landscape_min_button_height"
+                        android:layout_marginTop="0dp"
                         android:minHeight="@dimen/q3_landscape_min_button_height"
                         android:minWidth="@dimen/q3_landscape_min_button_width"
                         android:text="Antwort4"
@@ -89,18 +91,27 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/question_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:minWidth="0dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/question_imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_launcher" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:gravity="right" >
 
             <Button
                 android:id="@+id/nextquestion_button"
