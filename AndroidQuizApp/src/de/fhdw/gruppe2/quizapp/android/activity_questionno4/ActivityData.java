@@ -12,6 +12,7 @@ public class ActivityData {
 	private final String KEY_QUESTION_ID = "K4_2";
 	
 	private int mSeekBarValue;
+	private int mSessionID;
 	private int mQuestionId;
 	private QuestionDataNumeric mQuestion;
 	private ActivityInit mActivity;
@@ -65,10 +66,17 @@ public class ActivityData {
 	public int getmQuestionId() {
 		return mQuestionId;
 	}
+	
+	public int getmSessionID() {
+		return mSessionID;
+	}
 
 	//setter
 	public void setmQuestion(QuestionDataNumeric mQuestion) {
 		this.mQuestion = mQuestion;
 	}	
+	public void setmSessionID(int mSessionID) {
+		this.mSessionID = mSessionID;
+	}
 
 }

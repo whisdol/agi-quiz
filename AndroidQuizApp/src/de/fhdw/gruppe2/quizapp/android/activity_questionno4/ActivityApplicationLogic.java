@@ -3,6 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import java.util.Arrays;
 
+import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
@@ -23,6 +24,7 @@ public class ActivityApplicationLogic {
 		//TODO: get question id from bundle
 		mData.setmQuestion((QuestionDataNumeric) DatabaseConnection.getFrage(mData.getmQuestionId()));
 		setUpLayout();
+		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionId())).start();
 	}
 	
 	private void setUpLayout()
