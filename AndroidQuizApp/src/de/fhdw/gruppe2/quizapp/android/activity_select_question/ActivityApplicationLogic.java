@@ -3,8 +3,12 @@ package de.fhdw.gruppe2.quizapp.android.activity_select_question;
 
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
+import de.fhdw.gruppe2.quizapp.android.dbconnection.QSession;
+import de.fhdw.gruppe2.quizapp.android.dbconnection.QSessionQuestion;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 
 
@@ -14,17 +18,17 @@ public class ActivityApplicationLogic {
 
 	public ActivityApplicationLogic(ActivityData mData) {
 		this.mData = mData;
+		setUserDetails();
 		getSession();
-		// Call first Question
-		// startQuestionActivity(mData.getmQuestions()[0][0], mData.getmQuestions()[0][1]);
+		startQuestionActivity(mData.getmSession().getAndRemoveQuestion());
 		
 	}
 	
-    public void startQuestionActivity(int pNextQuestionId, int pNextQuestionType){
+    public void startQuestionActivity(QSessionQuestion pQuestion){
         Intent intent;
         intent = new Intent();
-        intent.setClass(mData.getActivity(), getClassForQuestionType(pNextQuestionType));
-        intent.putExtra(Constants.INTENT_QUESTION_ID, pNextQuestionId);
+        intent.setClass(mData.getActivity(), getClassForQuestionType(pQuestion.getmQuestionType()));
+        intent.putExtra(Constants.INTENT_QUESTION_ID, pQuestion.getmQuestionID());
         mData.getActivity().startActivityForResult(intent, Constants.INTENT_PARAMETER_START_QUESTION_ACTIVITY);
     }
 
@@ -32,16 +36,18 @@ public class ActivityApplicationLogic {
         if (resultCode == Activity.RESULT_OK){
             switch (requestCode){
                 case Constants.INTENT_PARAMETER_START_QUESTION_ACTIVITY:
-                	// TODO: Implement behavior after answering first question
                 	boolean correctlyAnswered = data.getExtras().getBoolean(Constants.INTENT_ANSWER_CORRECT);
                 	boolean cont = data.getExtras().getBoolean(Constants.INTENT_ANSWER_CONTINUE);
-                	// Save Result (Question answered correctly, not correctly) in the db
+                	
+                	// TODO: Save Result (Question answered correctly, not correctly) in the db
                 	// DatabaseConnection.updateSessionFrage(pSessionID, pFragenID, pRichtig, pAntwort);
+                	
+                	QSessionQuestion nextQuestion = mData.getmSession().getAndRemoveQuestion();
                 
-                	if (cont /* && noch nicht alle Fragen aus der Session gefragt */){
-                		// Call startQuestionActivity() with next QuestionId
+                	if (cont && nextQuestion != null){
+                		startQuestionActivity(nextQuestion);
                 	} else {
-                		// exit
+                		mData.getActivity().finish();
                 	}
                     break;
             }
@@ -62,16 +68,24 @@ public class ActivityApplicationLogic {
     		return Constants.ACTIVITY_QUESTION_NO3_CLASS;
     	case 4:
     		return Constants.ACTIVITY_QUESTION_NO4_CLASS;
-    	//case 5:
-    	//	return Constants.ACTIVITY_QUESTION_NO5_CLASS;
+    	case 5:
+    		return Constants.ACTIVITY_QUESTION_NO5_CLASS;
     	}
     }
     
-	private void getSession(){
-		// TODO: Implement getSession
-		// Call DatabaseConnection.getSession()
-		// Save QuestionIDs with QuestionType in mQuestions (in mData)
-		
+    private void setUserDetails(){
+		String username;
+		SharedPreferences prefs = mData.getActivity().getSharedPreferences(
+			      Constants.PACKAGE_IDENTIFIER, Context.MODE_PRIVATE);
+		username = prefs.getString(Constants.SHAREDPREF_USER_NAME, "");
+		mData.setmUserName(username);
+		if(username != ""){
+			mData.setmUserId(DatabaseConnection.getUser(username));
+		}
 	}
-
+    
+	private void getSession(){
+		QSession session = DatabaseConnection.getSession(mData.getmUserId());
+		mData.setmSession(session);
+	}
 }
