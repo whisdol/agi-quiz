@@ -18,40 +18,13 @@ import de.fhdw.gruppe2.quizapp.android.questiondata.AnswerData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataOrder;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 
 
 public class DatabaseConnection
 {
-    public DatabaseConnection()
-    {
-        
-    }
-    
-    
-    private String getXMLString(String url)
-    {
-        URL u;
-        String r = "";
-        try
-        {
-            u = new URL(url);
-            try
-            {
-                r = new Scanner( u.openStream() ).useDelimiter( "\\Z" ).next();
-            }catch(IOException e)
-            {
-            
-            }
-        }catch(MalformedURLException e)
-        {
-            System.out.println("Hier?");
-        }
-        
-        System.out.println( r );
-        return r;
-    }
-    
+       
     public static QuestionData getFrage(int idFrage)
     {
     	//TODO: Cleanup
@@ -123,6 +96,7 @@ public class DatabaseConnection
             questionObj = new QuestionDataNumeric(iFragenID, sFragenText, lAntworten, iZeit);
             break;
         case 5:
+        	questionObj = new QuestionDataOrder(iFragenID, sFragenText, lAntworten, convertToInt(sRichtig,0123), iZeit);
             break;     	
         }
         
