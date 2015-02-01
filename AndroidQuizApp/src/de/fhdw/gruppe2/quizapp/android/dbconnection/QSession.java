@@ -2,11 +2,11 @@ package de.fhdw.gruppe2.quizapp.android.dbconnection;
 
 import java.util.List;
 
-public class Session {
+public class QSession {
 	private int mSessionID;
-	private List<SessionQuestion> mQuestions;
+	private List<QSessionQuestion> mQuestions;
 	
-	public Session(int pSessionID, List<SessionQuestion> pQuestions){
+	public QSession(int pSessionID, List<QSessionQuestion> pQuestions){
 		mSessionID = pSessionID;
 		mQuestions = pQuestions;
 	}
@@ -15,7 +15,7 @@ public class Session {
 		return mSessionID;
 	}
 
-	public List<SessionQuestion> getmQuestions() {
+	public List<QSessionQuestion> getmQuestions() {
 		return mQuestions;
 	}
 
@@ -23,16 +23,16 @@ public class Session {
 		this.mSessionID = mSessionID;
 	}
 
-	public void setmQuestions(List<SessionQuestion> mQuestions) {
+	public void setmQuestions(List<QSessionQuestion> mQuestions) {
 		this.mQuestions = mQuestions;
 	}
 	
-	public void addQuestion(SessionQuestion pQuestion){
+	public void addQuestion(QSessionQuestion pQuestion){
 		mQuestions.add(pQuestion);
 	}
 	
-	public SessionQuestion getAndRemoveQuestion(){
-		SessionQuestion retQuestion = null;
+	public QSessionQuestion getAndRemoveQuestion(){
+		QSessionQuestion retQuestion = null;
 		if (mQuestions.size() > 0) {
 			retQuestion = mQuestions.get(0);
 			mQuestions.remove(0);

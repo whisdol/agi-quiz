@@ -1,10 +1,10 @@
 package de.fhdw.gruppe2.quizapp.android.dbconnection;
 
-public class SessionQuestion {
+public class QSessionQuestion {
 	private int mQuestionID;
 	private int mQuestionType;
 	
-	public SessionQuestion(int pQuestionID, int pQuestionType){
+	public QSessionQuestion(int pQuestionID, int pQuestionType){
 		mQuestionID = pQuestionID;
 		mQuestionType = pQuestionType;
 	}
