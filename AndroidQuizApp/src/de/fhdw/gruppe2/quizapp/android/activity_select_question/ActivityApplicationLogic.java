@@ -4,7 +4,9 @@ package de.fhdw.gruppe2.quizapp.android.activity_select_question;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 
 
@@ -14,6 +16,7 @@ public class ActivityApplicationLogic {
 
 	public ActivityApplicationLogic(ActivityData mData) {
 		this.mData = mData;
+		setUserDetails();
 		getSession();
 		// Call first Question
 		// startQuestionActivity(mData.getmQuestions()[0][0], mData.getmQuestions()[0][1]);
@@ -67,11 +70,22 @@ public class ActivityApplicationLogic {
     	}
     }
     
+    private void setUserDetails(){
+		String username;
+		SharedPreferences prefs = mData.getActivity().getSharedPreferences(
+			      Constants.PACKAGE_IDENTIFIER, Context.MODE_PRIVATE);
+		username = prefs.getString(Constants.SHAREDPREF_USER_NAME, "");
+		mData.setmUserName(username);
+		if(username != ""){
+			mData.setmUserId(DatabaseConnection.getUser(username));
+		}
+	}
+    
 	private void getSession(){
 		// TODO: Implement getSession
 		// Call DatabaseConnection.getSession()
 		// Save QuestionIDs with QuestionType in mQuestions (in mData)
 		
+		
 	}
-
 }

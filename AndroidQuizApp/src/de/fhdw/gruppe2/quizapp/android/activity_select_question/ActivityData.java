@@ -21,13 +21,12 @@ public class ActivityData {
 	// mQuestions[1][0] -> Question2 id
 	// mQuestions[1][1] -> Question2 type	
 	
-
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mActivity = act;
 		if ( savedInstanceState == null ) {  // no data to restore
             mSessionId = -1;
-            mUserName = ""; // get User name. prerequisite: Save Username in other activity in a shared_pref file
-            mUserId = DatabaseConnection.getUser(mUserName);
+            mUserName = "";
+            mUserId = -1;
             setmQuestions(new int[2][2]); // 2 Question/Session? -> Kim
             currentQuestionCounter = 0;
 		}
@@ -49,7 +48,6 @@ public class ActivityData {
 	}
 	
 	// getter
-	
 	public ActivityInit getActivity() {
 		return mActivity;
 	}
@@ -61,6 +59,14 @@ public class ActivityData {
 	public int[][] getmQuestions() {
 		return mQuestions;
 	}
+	
+	protected int getmUserId() {
+		return mUserId;
+	}
+
+	protected String getmUserName() {
+		return mUserName;
+	}
 
 	// setter
 	protected void setmSessionId(int mSessionId) {
@@ -71,8 +77,11 @@ public class ActivityData {
 		this.mQuestions = mQuestions;
 	}
 
+	protected void setmUserId(int mUserId) {
+		this.mUserId = mUserId;
+	}
 
-
-
-
+	protected void setmUserName(String mUserName) {
+		this.mUserName = mUserName;
+	}
 }

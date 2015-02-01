@@ -14,4 +14,6 @@ public class Constants {
 	public static final int INTENT_PARAMETER_START_QUESTION_ACTIVITY = 0;
 	public static final String INTENT_ANSWER_CORRECT = "IA1";
 	public static final String INTENT_ANSWER_CONTINUE = "IA2";
+	public static final String PACKAGE_IDENTIFIER = "de.fhdw.gruppe2.quizapp.android";
+	public static final String SHAREDPREF_USER_NAME = "key_username";
 }
