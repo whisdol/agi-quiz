@@ -140,9 +140,8 @@ public class DatabaseConnection
         return Integer.parseInt(sUserId);
     }
     
-    public static void getSession(int pUserID)
+    public static QSession getSession(int pUserID)
     {
-        String sUserId = "";
         try
         {
             Document document;
@@ -154,15 +153,33 @@ public class DatabaseConnection
             XPathFactory xpathFactory = XPathFactory.newInstance();
             XPath xpath = xpathFactory.newXPath();
             
-            //sUserId = xpath.evaluate("/user_info/idUser", document);
+            String sSessionID;
+            String sTempQuestionID;
+            String sTempQuestionType;
+            List<QSessionQuestion> questions = new ArrayList<QSessionQuestion>();
+            
+            
+            sSessionID = xpath.evaluate("/session_info/sessionID", document);
+            sTempQuestionID = xpath.evaluate("/session_info/fragen/Frage0/idFrage", document);
+            sTempQuestionType = xpath.evaluate("/session_info/fragen/Frage0/Fragentyp", document);
+            int i = 0;
+            while(sTempQuestionID != "")
+            {
+            	questions.add(new QSessionQuestion(convertToInt(sTempQuestionID, 0), convertToInt(sTempQuestionType, 0)));
+                i++;
+                sTempQuestionID = xpath.evaluate("/session_info/fragen/Frage" + i + "/idFrage", document);
+                sTempQuestionType = xpath.evaluate("/session_info/fragen/Frage" + i + "/Fragentyp", document);
+            }
+            
+            return new QSession(convertToInt(sSessionID, -1), questions);
             
             
         }catch(Exception e)
         {
             System.out.println(e);
-            return;
+            List<QSessionQuestion> questions = new ArrayList<QSessionQuestion>();
+            return new QSession(-1, questions);
         }
-        //return Integer.parseInt(sUserId);
         
     }
     
