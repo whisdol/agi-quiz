@@ -185,19 +185,10 @@ public class DatabaseConnection
     
     public static void updateSessionFrage(int pSessionID, int pFragenID, int pRichtig, String pAntwort)
     {
-    	String sUserId = "";
         try
         {
-            Document document;
             HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/UpdateSessionFrage.php?sessionID=" + pSessionID + "&fragenID=" + pFragenID + "&richtig=" + pRichtig + "&antwort=" + pAntwort );
             parsedXMLobj.fetchXML();
-            
-            //XPathFactory xpathFactory = XPathFactory.newInstance();
-            //XPath xpath = xpathFactory.newXPath();
-            
-            //sUserId = xpath.evaluate("/user_info/idUser", document);
-            
-            
         }catch(Exception e)
         {
             System.out.println(e);

@@ -83,6 +83,8 @@ public class ActivityApplicationLogic {
         intent = new Intent();
         intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
         intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
+        intent.putExtra(Constants.INTENT_ANSWER, Integer.toString(mData.getmSeekBarValue()));
+        intent.putExtra(Constants.INTENT_ANSWER_QID, mData.getmQuestionId());
         mData.getActivity().setResult(Activity.RESULT_OK, intent);
 	}
 	

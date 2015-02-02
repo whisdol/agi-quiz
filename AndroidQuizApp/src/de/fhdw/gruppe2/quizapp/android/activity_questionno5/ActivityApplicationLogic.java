@@ -56,6 +56,7 @@ public class ActivityApplicationLogic {
         intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
         intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
         intent.putExtra(Constants.INTENT_ANSWER, arrayToString(this.mData.getmSelectedValue()));
+        intent.putExtra(Constants.INTENT_ANSWER_QID, mData.getmQuestionId());
         mData.getActivity().setResult(Activity.RESULT_OK, intent);
 	}
 	

@@ -38,16 +38,22 @@ public class ActivityApplicationLogic {
                 case Constants.INTENT_PARAMETER_START_QUESTION_ACTIVITY:
                 	boolean correctlyAnswered = data.getExtras().getBoolean(Constants.INTENT_ANSWER_CORRECT);
                 	boolean cont = data.getExtras().getBoolean(Constants.INTENT_ANSWER_CONTINUE);
+                	String answer = data.getExtras().getString(Constants.INTENT_ANSWER);
+                	int qid = data.getExtras().getInt(Constants.INTENT_ANSWER_QID);
                 	
                 	// TODO: Save Result (Question answered correctly, not correctly) in the db
-                	// DatabaseConnection.updateSessionFrage(pSessionID, pFragenID, pRichtig, pAntwort);
+                	DatabaseConnection.updateSessionFrage(mData.getmSession().getmSessionID(), qid, (correctlyAnswered) ? 1:-1, answer);
                 	
                 	QSessionQuestion nextQuestion = mData.getmSession().getAndRemoveQuestion();
                 
                 	if (cont && nextQuestion != null){
                 		startQuestionActivity(nextQuestion);
                 	} else {
-                		mData.getActivity().finish();
+                		Intent intent;
+                        intent = new Intent();
+                        intent.setClass(mData.getActivity(), Constants.ACTIVITY_MENU_CLASS);
+                        mData.getActivity().startActivity(intent);
+                		
                 	}
                     break;
             }
@@ -77,7 +83,7 @@ public class ActivityApplicationLogic {
 		String username;
 		SharedPreferences prefs = mData.getActivity().getSharedPreferences(
 			      Constants.PACKAGE_IDENTIFIER, Context.MODE_PRIVATE);
-		username = prefs.getString(Constants.SHAREDPREF_USER_NAME, "");
+		username = prefs.getString(Constants.SHAREDPREF_USER_NAME, "Gatil");
 		mData.setmUserName(username);
 		if(username != ""){
 			mData.setmUserId(DatabaseConnection.getUser(username));

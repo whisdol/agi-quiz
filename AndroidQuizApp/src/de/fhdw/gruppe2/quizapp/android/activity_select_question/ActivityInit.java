@@ -3,6 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_select_question;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class ActivityInit extends Activity {
@@ -24,9 +25,11 @@ public class ActivityInit extends Activity {
 	private void initApplicationLogic() {
 		mApplicationLogic = new ActivityApplicationLogic(mData);
 	}
-
-	public Context getContext(){
-		return this;
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		mApplicationLogic.processActivityReturnValues(requestCode, resultCode, data);
 	}
 	
 }
