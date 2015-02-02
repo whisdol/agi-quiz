@@ -1,6 +1,7 @@
 // @author Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_questionno5;
 
+import de.fhdw.gruppe2.quizapp.android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -76,10 +77,10 @@ public class ActivityApplicationLogic {
 			}
 		}
 		if (mData.getmQuestion().isCorrectAnswer(selectedAnswers)){
-			answerstring = "Richtig!";
+			answerstring = mData.getActivity().getString(R.string.question_answered_correctly);
 			correct = true;
 		} else {
-			answerstring = "Falsch!";
+			answerstring = mData.getActivity().getString(R.string.question_answered_incorrectly);
 			correct = false;
 		}
 		Toast.makeText(mData.getActivity().getContext(), answerstring, Toast.LENGTH_SHORT).show();

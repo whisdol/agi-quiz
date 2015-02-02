@@ -19,6 +19,7 @@ import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionData;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataOrder;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 
 
@@ -84,7 +85,7 @@ public class DatabaseConnection
         
         switch(iFragenTyp){
         case 1:
-        	//questionObj = new QuestionDataSingleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
+        	questionObj = new QuestionDataSingleAnswer(iFragenID,sFragenText,lAntworten,convertToInt(sRichtig,0),iZeit);
             break;
         case 2:
         	//questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));

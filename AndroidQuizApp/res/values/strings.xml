@@ -13,5 +13,7 @@
     <string name="question_button_continue">Weiter</string>
     <string name="question_button_exit">Beenden</string>
     <string name="title_activity_statistics">Statistik</string>
+    <string name="question_answered_correctly">Richtig!</string>
+    <string name="question_answered_incorrectly">Falsch!</string>
 
 </resources>
