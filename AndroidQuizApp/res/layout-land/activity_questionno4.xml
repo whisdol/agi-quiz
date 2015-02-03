@@ -17,6 +17,17 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Frage"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <ProgressBar
+	        android:id="@+id/progressBar1"
+	        style="?android:attr/progressBarStyleHorizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:indeterminate="false"
+	        android:layout_below="@+id/question_textview"
+	        android:max="100"
+	        android:padding="4dip" >
+	    </ProgressBar>
 
     <LinearLayout
         android:id="@+id/linearLayout1"

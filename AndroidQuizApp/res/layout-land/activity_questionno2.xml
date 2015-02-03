@@ -18,6 +18,17 @@
         android:text="Frage"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <ProgressBar
+	        android:id="@+id/progressBar1"
+	        style="?android:attr/progressBarStyleHorizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/question_textview"
+	        android:indeterminate="false"
+	        android:max="100"
+	        android:padding="4dip" >
+	    </ProgressBar>
+	    
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -32,6 +43,8 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin" >
 
+
+        
         <CheckBox
             android:id="@+id/question2_check1"
             android:layout_width="wrap_content"

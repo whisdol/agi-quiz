@@ -29,5 +29,8 @@ public class Task implements Runnable {
         }
         DatabaseConnection.updateSessionFrage(mSessionID, mQuestionID, 0, "-1");
         //intend zur Session Acticty
+        //
+        //
+        //
 	}	
 }
