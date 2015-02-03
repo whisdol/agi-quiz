@@ -39,7 +39,7 @@ public class ActivityApplicationLogic {
         Intent intent;
         intent = new Intent();
         intent.setClass(mData.getActivity(), Constants.ACTIVITY_QUESTION_ACTIVITY_SCOREBOARD);
-        mData.getActivity().startActivity(intent );	
+        mData.getActivity().startActivity(intent);	
 	}
 
 	

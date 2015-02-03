@@ -30,7 +30,8 @@
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_questionno4.ActivityInit"></activity>
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_questionno5.ActivityInit"></activity>
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_menu.ActivityInit"></activity>
-        <!-- activity android:name="de.fhdw.gruppe2.quizapp.android.activity_inputmask.ActivityInit"></activity -->
+        <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_scoreboard.ActivityInit"></activity>
+        <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_select_question.ActivityInit"></activity>
     </application>
 
 </manifest>
