@@ -88,7 +88,7 @@ public class DatabaseConnection
         	questionObj = new QuestionDataSingleAnswer(iFragenID,sFragenText,lAntworten,convertToInt(sRichtig,0),iZeit);
             break;
         case 2:
-        	//questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
+        	questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
             break;
         case 3:
         	questionObj = new QuestionDataWithPicture(iFragenID, sFragenText, lAntworten, iZeit,sPicturePath);
