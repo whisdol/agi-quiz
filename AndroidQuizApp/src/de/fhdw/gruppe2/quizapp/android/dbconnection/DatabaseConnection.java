@@ -196,4 +196,65 @@ public class DatabaseConnection
             return;
         }
     }
+    
+    public static ArrayList<String> getScoreBoard(){
+    	ArrayList<String> userList = new ArrayList<String>();
+    	try
+        {
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/GetStatistic.php");
+            parsedXMLobj.fetchXML();
+            while(parsedXMLobj.isParsingStillRunning());
+            document = parsedXMLobj.getmParsedDocument();
+            
+            XPathFactory xpathFactory = XPathFactory.newInstance();
+            XPath xpath = xpathFactory.newXPath();
+            
+            String tmpName;
+            String tmpScore;
+            
+            tmpName = xpath.evaluate("/scoreboard/User/User0/Name", document);
+            tmpScore = xpath.evaluate("/scoreboard/User/User0/Count", document);
+            int i = 0;
+            while(tmpName != "")
+            {
+            	String listString = (i+1) + ": " + tmpName + " - " + tmpScore + " richtige Anworten"; // just a little bit too static 
+            	userList.add(listString);
+            	i++;
+                tmpName = xpath.evaluate("/scoreboard/User/User" + i + "/Name", document);
+                tmpName = xpath.evaluate("/scoreboard/User/User" + i + "/Count", document);
+            }
+            
+            return userList;
+            
+            
+        }catch(Exception e)
+        {
+            System.out.println(e);
+            userList.add("None");
+            return userList;
+        }	
+    }
+    
+    public static String getUserScore(int userid){
+    	String score = "";
+    	try
+        {
+            Document document;
+            HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/GetScore.php?userID=" + userid);
+            parsedXMLobj.fetchXML();
+            while(parsedXMLobj.isParsingStillRunning());
+            document = parsedXMLobj.getmParsedDocument();
+            
+            XPathFactory xpathFactory = XPathFactory.newInstance();
+            XPath xpath = xpathFactory.newXPath();
+            
+            score = xpath.evaluate("/scoreboard/User/Antwort0/Count", document);         
+            
+        }catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    	return score;
+    }
 }

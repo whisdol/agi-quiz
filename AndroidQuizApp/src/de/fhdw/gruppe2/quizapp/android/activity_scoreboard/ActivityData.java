@@ -1,6 +1,9 @@
 //Creator Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_scoreboard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +14,8 @@ public class ActivityData {
 	private static final String KEY_NAME_VALUE = "K1";
 	
 	private String mName;
+	private String mScore;
+	private ArrayList<String> mRanking;
 	private ActivityInit mActivity;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
@@ -56,9 +61,26 @@ public class ActivityData {
 		return mName;
 	}
 	
+	public String getmScore() {
+		return mScore;
+	}
+
+	public ArrayList<String> getmRanking() {
+		return mRanking;
+	}
+
+	
 	// setter
 	
 	public void setmName(String mName) {
 		this.mName = mName;
+	}
+
+	public void setmScore(String mScore) {
+		this.mScore = mScore;
+	}
+
+	public void setmRanking(ArrayList<String> mRanking) {
+		this.mRanking = mRanking;
 	}
 }
