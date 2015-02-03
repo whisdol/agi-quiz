@@ -2,22 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     
-	<TextView
-        android:id="@+id/scoreboardTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom|center"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:text="@string/title_activity_statistics"
-        android:textSize="@dimen/question_text_size" >
-    </TextView>
+    <LinearLayout android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:orientation="horizontal"
+        android:layout_weight="1" >
+        
+        <LinearLayout android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+        android:layout_weight="1" >
+	        <TextView android:id="@+id/textView_userName_title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="bottom"
+		        android:padding="@dimen/activity_horizontal_margin"
+		        android:text="@string/scoreboard_username_title"
+		        android:textStyle="bold"
+		        android:textSize="@dimen/question_text_size"/>
+	        <TextView android:id="@+id/textView_userName"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="bottom"
+		        android:padding="@dimen/activity_horizontal_margin"
+		        android:text="@string/scoreboard_username_default"
+		        android:textSize="@dimen/question_text_size"/>
+        </LinearLayout>
+        	       
+	     <LinearLayout android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+	        android:layout_weight="1" >
+	        <TextView android:id="@+id/textView_userScore_title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="bottom"
+		        android:padding="@dimen/activity_horizontal_margin"
+		        android:text="@string/scoreboard_score_title"
+				android:textStyle="bold"
+		        android:textSize="@dimen/question_text_size"/>
+	        
+	        <TextView android:id="@+id/textView_userScore"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="bottom|center"
+		        android:padding="@dimen/activity_horizontal_margin"
+		        android:text="@string/scoreboard_score_default"
+		        android:textSize="@dimen/question_text_size"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listScoreboard"
         android:layout_width="match_parent"
-        android:layout_height="331dp"
-        android:layout_weight="0.66" >
+        android:layout_height="0dp"
+        android:layout_weight="4" >
     </ListView>
+    
+    <Button
+	    android:id="@+id/button_back"
+	    android:layout_width="wrap_content"
+	    android:layout_height="0dp"
+	    android:minHeight="10dp"
+	    android:maxHeight="10dp"
+	    android:layout_weight="1"
+	    android:gravity="center"
+	    android:layout_gravity="center_vertical|center_horizontal"
+	    android:text="@string/back_button" />
+
 </LinearLayout>

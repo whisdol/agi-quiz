@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Android Quiz App</string>
+    <string name="app_name">getQuiz()</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Menu</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="inputmask_button_confirm_text">OK</string>
     <string name="inputmask_edittext_hint_text">Gib deinen Spielernamen ein!</string>
-    <string name="menu_button_questions">Start quiz</string>
+    <string name="menu_button_questions">Quiz starten</string>
     <string name="menu_button_statistics">Show statistics</string>
-    <string name="menu_button_scoreboard">Show scoreboard</string>
+    <string name="menu_button_scoreboard">Bestenliste anzeigen</string>
     <string name="question_button_continue">Weiter</string>
     <string name="question_button_exit">Beenden</string>
     <string name="title_activity_statistics">Statistik</string>
     <string name="question_answered_correctly">Richtig!</string>
     <string name="question_answered_incorrectly">Falsch!</string>
+    <string name="scoreboard_username_title">Name</string>
+    <string name="scoreboard_username_default">Default</string>
+    <string name="scoreboard_score_title">Score</string>
+    <string name="scoreboard_score_default">0</string>
+    <string name="back_button">Zurück</string>
 
 </resources>
