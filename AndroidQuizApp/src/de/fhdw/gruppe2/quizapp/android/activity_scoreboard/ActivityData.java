@@ -1,17 +1,19 @@
-//Creator Daniel Gnech
+//Creator Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_scoreboard;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 
 public class ActivityData {
 	
 	private static final String KEY_NAME_VALUE = "K1";
+	private static final String KEY_SCORE_VALUE = "K2";
+	private static final String KEY_RANKING_VALUE = "K3";
 	
 	private String mName;
 	private String mScore;
@@ -21,7 +23,7 @@ public class ActivityData {
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mActivity = act;
 		if ( savedInstanceState == null ) {  // no data to restore
-			getNameFromPref();			
+			getData();			
 		}
 		else {
 			restoreDataFromBundle(savedInstanceState);
@@ -32,10 +34,14 @@ public class ActivityData {
 	
 	public void saveDataInBundle(Bundle b) {
 		b.putString(KEY_NAME_VALUE, mName);
+		b.putString(KEY_SCORE_VALUE, mScore);
+		b.putStringArrayList(KEY_RANKING_VALUE, mRanking);
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
 		mName = b.getString(KEY_NAME_VALUE);
+		mScore = b.getString(KEY_SCORE_VALUE);
+		mRanking = b.getStringArrayList(KEY_RANKING_VALUE);
 	}
 	
 	public void saveNameToPref(){
@@ -50,6 +56,16 @@ public class ActivityData {
 			      Constants.SHAREDPREF_ID, 0);
 		mName = prefs.getString(Constants.SHAREDPREF_USER_NAME, "");
 	}
+	
+	private void getData(){
+		SharedPreferences prefs = getActivity().getSharedPreferences(
+			      Constants.SHAREDPREF_ID, 0);
+		setmName(prefs.getString(Constants.SHAREDPREF_USER_NAME, "Gatil"));
+		int uid = DatabaseConnection.getUser(getmName());
+		setmScore(DatabaseConnection.getUserScore(uid));
+		setmRanking(DatabaseConnection.getScoreBoard());
+	}
+	
 	
 	// getter
 	

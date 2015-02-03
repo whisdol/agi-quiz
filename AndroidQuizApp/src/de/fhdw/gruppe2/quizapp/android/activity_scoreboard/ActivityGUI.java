@@ -1,8 +1,7 @@
-//Creator Daniel Gnech
+//Creator Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_scoreboard;
 
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import de.fhdw.gruppe2.quizapp.android.R;

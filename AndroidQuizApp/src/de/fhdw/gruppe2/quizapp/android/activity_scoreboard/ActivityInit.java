@@ -1,3 +1,4 @@
+//Creator Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_scoreboard;
 
 import android.app.Activity;
