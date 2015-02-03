@@ -35,14 +35,14 @@ public class ActivityApplicationLogic {
 	
 	private void setUpLayout()
 	{
-		QuestionDataWithPicture q = this.mData.getQuestion();
+		QuestionDataWithPicture q = this.mData.getmQuestion();
 		this.mGUI.getmQuestionTextView().setText(q.getQuestion());
 		this.mGUI.getmAnswerButton0().setText(q.getAnswers().get(0));
 		this.mGUI.getmAnswerButton1().setText(q.getAnswers().get(1));
 		this.mGUI.getmAnswerButton2().setText(q.getAnswers().get(2));
 		this.mGUI.getmAnswerButton3().setText(q.getAnswers().get(3));
-		new DownloadImageTask((ImageView) this.mGUI.getmImageQuestionView())
-        .execute(mData.getQuestion().getmPicturePath());
+		LoadImage task = new LoadImage(this.mData, this.mGUI.getmImageQuestionView());
+		task.execute(mData.getmQuestion().getmPicturePath());
 	}
 		//set Image 
 	
@@ -80,7 +80,7 @@ public class ActivityApplicationLogic {
 	private boolean evaluateAnswers(){
 		String answerstring;
 		boolean correct;
-		if (mData.getQuestion().isCorrectAnswer(mData.getmSelectedAnswer())){
+		if (mData.getmQuestion().isCorrectAnswer(mData.getmSelectedAnswer())){
 			answerstring = "Richtig!";
 			correct = true;
 		} else {

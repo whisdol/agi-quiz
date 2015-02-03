@@ -19,7 +19,7 @@ public class ActivityGUI {
 	private ProgressBar mBar;
 	
 	public ActivityGUI(ActivityInit act) {
-		act.setContentView(R.layout.activity_questionno1);
+		act.setContentView(R.layout.activity_questionno3);
 		mAnswerButton0 = (Button) act.findViewById(R.id.answer_button_0);
 		mAnswerButton1 = (Button) act.findViewById(R.id.answer_button_1);
 		mAnswerButton2 = (Button) act.findViewById(R.id.answer_button_2);

@@ -6,9 +6,15 @@ public class QuestionDataWithPicture extends QuestionData {
 	
 	private String mPicturePath;
 	
-	public QuestionDataWithPicture(int pID, String pQuestion, List<AnswerData> pAnswers,
-			int pCorrectAnswer,int pTime, String pPicturePath) {
-		super(pID, pQuestion, pAnswers, pCorrectAnswer,pTime);
+	public QuestionDataWithPicture(int pID, String pQuestion, List<AnswerData> pAnswers,int pTime, String pPicturePath) {
+		super(pID, pQuestion, pAnswers, 0,pTime);
+		for(int i = 0;i<pAnswers.size(); i++)
+		{
+			if(pAnswers.get(i).getmRichtig() == 1)
+			{
+				this.setmCorrectAnswer(i);
+			}
+		}
 		setmPicturePath(pPicturePath);
 	}
 

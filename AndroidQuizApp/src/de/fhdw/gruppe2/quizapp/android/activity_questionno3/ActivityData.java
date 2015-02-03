@@ -71,7 +71,7 @@ public class ActivityData {
 		return this.mSelectedAnswer;
 	}
 
-	public QuestionDataWithPicture getQuestion() {
+	public QuestionDataWithPicture getmQuestion() {
 		return question;
 	}
 

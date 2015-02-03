@@ -91,13 +91,13 @@ public class DatabaseConnection
         	//questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
             break;
         case 3:
-        	questionObj = new QuestionDataWithPicture(iFragenID, sFragenText, lAntworten, iZeit,convertToInt(sRichtig,0),sPicturePath);
+        	questionObj = new QuestionDataWithPicture(iFragenID, sFragenText, lAntworten, iZeit,sPicturePath);
             break;
         case 4:
             questionObj = new QuestionDataNumeric(iFragenID, sFragenText, lAntworten, iZeit);
             break;
         case 5:
-        	questionObj = new QuestionDataOrder(iFragenID, sFragenText, lAntworten, convertToInt(sRichtig,0123), iZeit);
+        	questionObj = new QuestionDataOrder(iFragenID, sFragenText, lAntworten, iZeit);
             break;     	
         }
         
