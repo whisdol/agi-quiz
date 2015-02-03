@@ -82,7 +82,7 @@ public class ActivityApplicationLogic {
     private void setUserDetails(){
 		String username;
 		SharedPreferences prefs = mData.getActivity().getSharedPreferences(
-			      Constants.PACKAGE_IDENTIFIER, Context.MODE_PRIVATE);
+			      Constants.SHAREDPREF_ID, Context.MODE_PRIVATE);
 		username = prefs.getString(Constants.SHAREDPREF_USER_NAME, "Gatil");
 		mData.setmUserName(username);
 		if(username != ""){

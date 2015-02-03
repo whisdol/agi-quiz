@@ -1,23 +1,22 @@
+//Creator Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
 
-import android.content.Intent;
-import android.os.Bundle;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 
 public class ActivityData {
 	
-	private static final String KEYCOUNTERVALUE = "K1";
+	private static final String KEY_NAME_VALUE = "K1";
 	
-	private int mCounter;
+	private String mName;
 	private ActivityInit mActivity;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
-		Intent intent;
 		mActivity = act;
 		if ( savedInstanceState == null ) {  // no data to restore
-			mCounter = 0;   // use default
-			intent = act.getIntent();
-			mCounter = intent.getIntExtra(Constants.PARAMETERKEYCOUNTERVALUE, mCounter);			
+			getNameFromPref();			
 		}
 		else {
 			restoreDataFromBundle(savedInstanceState);
@@ -27,13 +26,24 @@ public class ActivityData {
 	// save and restore
 	
 	public void saveDataInBundle(Bundle b) {
-		b.putInt(KEYCOUNTERVALUE, mCounter);
-		
+		b.putString(KEY_NAME_VALUE, mName);
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
-		mCounter = b.getInt(KEYCOUNTERVALUE);
-		
+		mName = b.getString(KEY_NAME_VALUE);
+	}
+	
+	public void saveNameToPref(){
+		SharedPreferences sharedPref = getActivity().getSharedPreferences(Constants.SHAREDPREF_ID, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+		editor.putString(Constants.SHAREDPREF_USER_NAME, mName);
+		editor.commit();
+	}
+	
+	public void getNameFromPref(){
+		SharedPreferences prefs = mActivity.getSharedPreferences(
+			      Constants.SHAREDPREF_ID, 0);
+		mName = prefs.getString(Constants.SHAREDPREF_USER_NAME, "");
 	}
 	
 	// getter
@@ -42,4 +52,13 @@ public class ActivityData {
 		return mActivity;
 	}
 
+	public String getmName() {
+		return mName;
+	}
+	
+	// setter
+	
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 }

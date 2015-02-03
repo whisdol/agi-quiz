@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.fhdw.gruppe2.quizapp.android.activity_select_question.ActivityInit"
+            android:name="de.fhdw.gruppe2.quizapp.android.activity_inputmask.ActivityInit"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_questionno4.ActivityInit"></activity>
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_questionno5.ActivityInit"></activity>
         <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_menu.ActivityInit"></activity>
-        <activity android:name="de.fhdw.gruppe2.quizapp.android.activity_inputmask.ActivityInit"></activity>
+        <!-- activity android:name="de.fhdw.gruppe2.quizapp.android.activity_inputmask.ActivityInit"></activity -->
     </application>
 
 </manifest>

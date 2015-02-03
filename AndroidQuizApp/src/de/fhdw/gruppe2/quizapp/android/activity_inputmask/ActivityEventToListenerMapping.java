@@ -1,3 +1,4 @@
+//Creator Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_inputmask;
 
 import android.text.Editable;
@@ -13,8 +14,8 @@ public class ActivityEventToListenerMapping implements OnClickListener, TextWatc
 	public ActivityEventToListenerMapping (ActivityGUI gui, ActivityApplicationLogic appLogic) {
 		this.mGUI = gui;
 		this.mApplicationLogic = appLogic;
-		
 		mGUI.getConfirmButton().setOnClickListener(this);
+		mGUI.getmEditText().addTextChangedListener(this);
 	}
 
 	@Override
@@ -25,20 +26,17 @@ public class ActivityEventToListenerMapping implements OnClickListener, TextWatc
 	@Override
 	public void afterTextChanged(Editable s) {
 		mApplicationLogic.onEditTextChanged();
-		
 	}
 
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
 			int after) {
-		// TODO Auto-generated method stub
-		
+		// Do nothing
 	}
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
-		// TODO Auto-generated method stub
-		
+		// Do nothing
 	}
 	
 	
