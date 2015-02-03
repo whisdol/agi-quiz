@@ -1,6 +1,5 @@
-/**
- * Creator: Alexander Frese
- */
+// @author Alexander Frese
+ 
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
 import android.view.View;
@@ -26,7 +25,6 @@ public class ActivityEventToListenerMapping implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if(mGUI.getmCheckBox0().getId() == v.getId())
 		{
 			mApplicationLogic.onCheckBox0Clicked();
