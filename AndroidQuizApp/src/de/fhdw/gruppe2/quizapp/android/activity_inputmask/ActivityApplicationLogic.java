@@ -17,14 +17,12 @@ public class ActivityApplicationLogic {
 	}
 
 	private void applyDataToGUI() {
-		
+		mGUI.getmEditText().setText(mData.getmName());
 	}
 	
-	
-	
 	// event handling
-	
 	public void onConfirmButtonClicked() {
+		mData.saveNameToPref();
 		Intent intent;
 		intent = new Intent();
 		intent.setClass(mData.getActivity(), Constants.ACTIVITYMENUCLASS);
@@ -33,10 +31,8 @@ public class ActivityApplicationLogic {
 	}
 
 	public void onEditTextChanged() {
-		// TODO Auto-generated method stub
-		
+		String name;
+		name = mGUI.getmEditText().getText().toString().trim();
+        mData.setmName(name);
 	}
-	
-
-
 }
