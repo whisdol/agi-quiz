@@ -110,8 +110,8 @@
 
                 <ImageView
                     android:id="@+id/question_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/image_size_land"
+                    android:layout_height="@dimen/image_size_land"
                     android:src="@drawable/ic_launcher" />
 
             </LinearLayout>

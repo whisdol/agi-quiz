@@ -1,16 +1,14 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
-import de.fhdw.gruppe2.quizapp.android.Task.Task;
-import de.fhdw.gruppe2.quizapp.android.constants.Constants;
-import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
-import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
-import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
-import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
+import android.widget.ImageView;
 import android.widget.Toast;
+import de.fhdw.gruppe2.quizapp.android.Task.Task;
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 
 
 public class ActivityApplicationLogic {
@@ -43,8 +41,11 @@ public class ActivityApplicationLogic {
 		this.mGUI.getmAnswerButton1().setText(q.getAnswers().get(1));
 		this.mGUI.getmAnswerButton2().setText(q.getAnswers().get(2));
 		this.mGUI.getmAnswerButton3().setText(q.getAnswers().get(3));
-		//set Image 
+		new DownloadImageTask((ImageView) this.mGUI.getmImageQuestionView())
+        .execute(mData.getQuestion().getmPicturePath());
 	}
+		//set Image 
+	
 	
 	// event handling
 
