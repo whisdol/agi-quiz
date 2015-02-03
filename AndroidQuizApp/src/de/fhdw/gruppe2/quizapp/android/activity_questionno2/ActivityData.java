@@ -1,19 +1,46 @@
-/**
- * Creator: Alexander Frese
- */
+// @author Alexander Frese
+ 
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import de.fhdw.gruppe2.quizapp.android.constants.Constants;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
+
 
 public class ActivityData {
+	private final String KEY_SELECTED_ANSWERS = "K2_1";
+	private final String KEY_QUESTION_ID = "K2_2";
+	
 	private boolean[] mSelectedAnswer;
 	private ActivityInit mActivity;
 	private int mSessionID;
 	private int mQuestionID;
+	private QuestionDataMultipleAnswer mQuestion;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
-		mSelectedAnswer = new boolean[4];
 		mActivity = act;
+		// new instance
+		if ( savedInstanceState == null ) {  
+			mSelectedAnswer = new boolean[4];
+            Intent intent = mActivity.getIntent();
+            mQuestionID = intent.getIntExtra(Constants.INTENT_QUESTION_ID, mQuestionID);
+		}
+		// restore bundle
+		else {
+			restoreDataFromBundle(savedInstanceState);
+		}
+	}
+	
+	// bundle methods
+	public void saveDataInBundle(Bundle b) {
+		b.putBooleanArray(KEY_SELECTED_ANSWERS, mSelectedAnswer);
+		b.putInt(KEY_QUESTION_ID, mQuestionID);
+	}
+	
+	public void restoreDataFromBundle(Bundle b) {
+		mSelectedAnswer = b.getBooleanArray(KEY_SELECTED_ANSWERS);
+		mQuestionID = b.getInt(KEY_QUESTION_ID);
 	}
 	
 	// getter
@@ -31,7 +58,11 @@ public class ActivityData {
 	public boolean[] getmSelectedAnswer() {
 		return mSelectedAnswer;
 	}
-
+	
+	public QuestionDataMultipleAnswer getmQuestion() {
+		return mQuestion;
+	}
+	
 	//setter
 	public void setmSessionID(int mSessionID) {
 		this.mSessionID = mSessionID;
@@ -41,6 +72,12 @@ public class ActivityData {
 	public void setmQuestionID(int mQuestionID) {
 		this.mQuestionID = mQuestionID;
 	}
+	
+	//setter
+	public void setmQuestion(QuestionDataMultipleAnswer mQuestion) {
+		this.mQuestion = mQuestion;
+	}	
+
 	
 	public void setmSelectedAnswer(boolean mCheckBoxValue, int mCheckBoxNumber) {
 		if(mCheckBoxNumber == 0)

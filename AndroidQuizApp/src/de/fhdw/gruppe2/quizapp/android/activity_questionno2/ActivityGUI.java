@@ -1,6 +1,5 @@
-/**
- * Creator: Alexander Frese
- */
+// @author Alexander Frese
+ 
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
 import android.widget.Button;
