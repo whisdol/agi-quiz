@@ -15,7 +15,6 @@ public class ActivityEventToListenerMapping implements OnClickListener {
 		
 		mGUI.getmQuestionsButton().setOnClickListener(this);
 		mGUI.getmScoreboardButton().setOnClickListener(this);
-		mGUI.getmStatisticsButton().setOnClickListener(this);
 	}
 
 	@Override

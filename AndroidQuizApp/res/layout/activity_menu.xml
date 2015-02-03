@@ -16,20 +16,12 @@
         android:layout_centerHorizontal="true"
         android:text="@string/menu_button_questions" />
 
-    <Button
-        android:id="@+id/statistics_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/questions_button"
-        android:layout_marginTop="@dimen/menu_align_button"
-        android:layout_centerHorizontal="true"
-        android:text="@string/menu_button_statistics" />
 
     <Button
         android:id="@+id/scoreboard_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/statistics_button"
+        android:layout_below="@+id/questions_button"
         android:layout_marginTop="@dimen/menu_align_button"
         android:layout_centerHorizontal="true"
         android:text="@string/menu_button_scoreboard" />
