@@ -3,6 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.constants;
 public class Constants {
 
 	public static final Class<?> ACTIVITYMENUCLASS = de.fhdw.gruppe2.quizapp.android.activity_menu.ActivityInit.class;
+	public static final Class<?> ACTIVITY_QUESTION_ACTIVITY_SELECT_QUESTION = de.fhdw.gruppe2.quizapp.android.activity_select_question.ActivityInit.class;
 	public static final Class<?> ACTIVITY_QUESTION_NO1_CLASS = de.fhdw.gruppe2.quizapp.android.activity_questionno1.ActivityInit.class;
 	public static final Class<?> ACTIVITY_QUESTION_NO2_CLASS = de.fhdw.gruppe2.quizapp.android.activity_questionno2.ActivityInit.class;
 	public static final Class<?> ACTIVITY_QUESTION_NO3_CLASS = de.fhdw.gruppe2.quizapp.android.activity_questionno3.ActivityInit.class;

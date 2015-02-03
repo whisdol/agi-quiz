@@ -19,7 +19,7 @@ public class ActivityApplicationLogic {
 		applyDataToGUI();
 		//QuestionDataMultipleAnswer question = DB.GetQuestion(mData.getIdQuestion());
 		setUpLayout(new QuestionDataMultipleAnswer(0, null, null, 0, 0));
-		createTimer(mData.getmQuestion().getmTime()).start();
+		//createTimer(mData.getmQuestion().getmTime()).start();
 	}
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
