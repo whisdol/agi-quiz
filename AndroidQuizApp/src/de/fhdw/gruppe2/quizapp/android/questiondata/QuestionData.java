@@ -25,7 +25,9 @@ public abstract class QuestionData /* implements Parcelable */ {
 	public int getID(){
 		return mID;
 	}
-		
+	public int getmTime(){
+		return mTime;
+	}
 	public String getQuestion() {
 		return mQuestion;
 	}

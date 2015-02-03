@@ -8,6 +8,7 @@ import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataNumeric;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +23,24 @@ public class ActivityApplicationLogic {
 		this.mGUI = mGUI;
 		mData.setmQuestion((QuestionDataNumeric) DatabaseConnection.getFrage(mData.getmQuestionId()));
 		setUpLayout();
-		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionId())).start();
+		createTimer(mData.getmQuestion().getmTime()).start();
 	}
-	
+	private CountDownTimer createTimer (long time){
+		long runTime=time;
+		if (time==-1){
+			runTime=10000;
+		}	
+		 return new CountDownTimer(runTime, 10) {
+
+		     public void onTick(long millisUntilFinished) {
+		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
+		     }
+
+		     public void onFinish() {
+		         onContinueButtonClicked();
+		     }
+		  };
+	}
 	private void setUpLayout()
 	{
 		QuestionDataNumeric q = mData.getmQuestion();
