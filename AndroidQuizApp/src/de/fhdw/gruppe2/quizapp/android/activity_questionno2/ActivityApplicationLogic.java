@@ -3,6 +3,7 @@
  */
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
+import android.os.CountDownTimer;
 import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 
@@ -18,9 +19,25 @@ public class ActivityApplicationLogic {
 		applyDataToGUI();
 		//QuestionDataMultipleAnswer question = DB.GetQuestion(mData.getIdQuestion());
 		setUpLayout(new QuestionDataMultipleAnswer(0, null, null, 0, 0));
-		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionID())).start();
+		createTimer(mData.getmQuestion().getmTime()).start();
 	}
+	private CountDownTimer createTimer (long time){
+		long runTime=time;
+		if (time==-1){
+			runTime=10000;
+		}	
+		 return new CountDownTimer(runTime, 10) {
 
+		     public void onTick(long millisUntilFinished) {
+		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
+		     }
+
+		     public void onFinish() {
+		         onContinueButtonClicked();
+		     }
+		  };
+	}
+	
 	private void applyDataToGUI() {
 		this.mGUI.getmCheckBox0().setChecked(false);
 		this.mGUI.getmCheckBox1().setChecked(false);

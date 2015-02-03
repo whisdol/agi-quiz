@@ -3,6 +3,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.widget.Toast;
 import de.fhdw.gruppe2.quizapp.android.R;
 import de.fhdw.gruppe2.quizapp.android.Task.Task;
@@ -22,7 +23,23 @@ public class ActivityApplicationLogic {
 		mData.setmQuestion((QuestionDataSingleAnswer) DatabaseConnection.getFrage(mData.getmQuestionID()));
 		applyDataToGUI();
 		setUpLayout();
-		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionID())).start();
+		createTimer(mData.getmQuestion().getmTime()).start();
+	}
+	private CountDownTimer createTimer (long time){
+		long runTime=time;
+		if (time==-1){
+			runTime=10000;
+		}	
+		 return new CountDownTimer(runTime, 10) {
+
+		     public void onTick(long millisUntilFinished) {
+		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
+		     }
+
+		     public void onFinish() {
+		         onContinueButtonClicked();
+		     }
+		  };
 	}
 
 	private void applyDataToGUI() {

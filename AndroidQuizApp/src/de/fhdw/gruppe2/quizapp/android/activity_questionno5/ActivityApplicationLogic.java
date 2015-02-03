@@ -5,6 +5,7 @@ import de.fhdw.gruppe2.quizapp.android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.widget.Toast;
 import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
@@ -23,9 +24,24 @@ public class ActivityApplicationLogic {
 		//TODO: get question id from bundle
 		mData.setmQuestion((QuestionDataOrder) DatabaseConnection.getFrage(mData.getmQuestionId()));
 		setUpLayout();
-		new Thread(new Task(mGUI.getmBar(),mData.getmSessionID(),mData.getmQuestionId())).start();
+		createTimer(mData.getmQuestion().getmTime()).start();
 	}
-	
+	private CountDownTimer createTimer (long time){
+		long runTime=time;
+		if (time==-1){
+			runTime=10000;
+		}	
+		 return new CountDownTimer(runTime, 10) {
+
+		     public void onTick(long millisUntilFinished) {
+		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
+		     }
+
+		     public void onFinish() {
+		         onContinueButtonClicked();
+		     }
+		  };
+	}
 	private void setUpLayout()
 	{
 		QuestionDataOrder q = mData.getmQuestion();

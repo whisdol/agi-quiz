@@ -1,3 +1,4 @@
+<!-- Creator Daniel Gnech -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,11 +13,11 @@
         android:id="@+id/intputmask_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:ems="10"
         android:hint="@string/inputmask_edittext_hint_text"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:maxLength="20"
         android:padding="@dimen/inputmask_edittext_padding" >
         <requestFocus />

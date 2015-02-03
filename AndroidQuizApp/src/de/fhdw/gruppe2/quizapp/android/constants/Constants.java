@@ -18,6 +18,6 @@ public class Constants {
 	public static final String INTENT_ANSWER_CONTINUE = "IA2";
 	public static final String INTENT_ANSWER = "IA3";
 	public static final String INTENT_ANSWER_QID = "IA4";
-	public static final String PACKAGE_IDENTIFIER = "de.fhdw.gruppe2.quizapp.android";
-	public static final String SHAREDPREF_USER_NAME = "key_username";
+	public static final String SHAREDPREF_ID = "usernamestorage";
+	public static final String SHAREDPREF_USER_NAME = "username";
 }
