@@ -1,5 +1,6 @@
 package de.fhdw.gruppe2.quizapp.android.activity_menu;
 
+import de.fhdw.gruppe2.quizapp.android.R;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -17,25 +18,16 @@ public class ActivityEventToListenerMapping implements OnClickListener {
 		mGUI.getmStatisticsButton().setOnClickListener(this);
 	}
 
-	
-	public void onClickQuestion(View v) {
-		mApplicationLogic.onQuestionsButtonClicked();	
-	}
-	
-	
-	public void onClickStatistics(View v) {
-		mApplicationLogic.onStatisticsButtonClicked();	
-	}
-	
-	
-	public void onClickScoreboard(View v) {
-		mApplicationLogic.onScoreboardButtonClicked();	
-	}
-
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		if(v.getId() == R.id.questions_button)
+		{
+			mApplicationLogic.onQuestionsButtonClicked();	
+		}else if(v.getId() == R.id.scoreboard_button)
+		{
+			mApplicationLogic.onScoreboardButtonClicked();	
+		}
 	}
 
 	
