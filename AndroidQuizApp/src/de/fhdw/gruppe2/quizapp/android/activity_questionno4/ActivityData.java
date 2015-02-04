@@ -34,6 +34,7 @@ public class ActivityData {
 	public void saveDataInBundle(Bundle b) {
 		b.putInt(KEY_SEEKBAR_VALUE, mSeekBarValue);
 		b.putInt(KEY_QUESTION_ID, mQuestionId);
+		mTimer.cancel();
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {

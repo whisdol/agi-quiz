@@ -38,6 +38,7 @@ public class ActivityData {
 	public void saveDataInBundle(Bundle b) {
 		b.putBooleanArray(KEY_SELECTED_ANSWERS, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
+		mTimer.cancel();
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {

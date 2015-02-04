@@ -36,7 +36,7 @@ public class ActivityData {
 		System.out.println("Data before save: " + mSelectedAnswer + " & " + mQuestionID);
 		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
-		
+		mTimer.cancel();
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
