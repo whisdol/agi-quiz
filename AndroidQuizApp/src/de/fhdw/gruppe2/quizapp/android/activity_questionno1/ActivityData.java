@@ -68,7 +68,6 @@ public class ActivityData {
 	}
 
 	//setter
-	
 	public void setmTimer(CountDownTimer pTimer) {
 		this.mTimer = pTimer;
 	}
@@ -76,8 +75,6 @@ public class ActivityData {
 	public void setmSessionID(int mSessionID) {
 		this.mSessionID = mSessionID;
 	}
-
-
 
 	public void setmQuestionID(int mQuestionID) {
 		this.mQuestionID = mQuestionID;

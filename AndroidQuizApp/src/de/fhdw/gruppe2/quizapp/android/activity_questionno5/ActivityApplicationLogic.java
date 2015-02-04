@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.Toast;
-import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataOrder;
@@ -24,7 +23,7 @@ public class ActivityApplicationLogic {
 		//TODO: get question id from bundle
 		mData.setmQuestion((QuestionDataOrder) DatabaseConnection.getFrage(mData.getmQuestionId()));
 		setUpLayout();
-		createTimer(mData.getmQuestion().getmTime()).start();
+		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
@@ -40,7 +39,9 @@ public class ActivityApplicationLogic {
 		    	 }
 
 		     public void onFinish() {
-		         onContinueButtonClicked();
+		 		boolean correct = evaluateAnswers();
+				defineActivityReturnValues(correct, true);
+				mData.getActivity().finish();
 		     }
 		  };
 	}
@@ -136,11 +137,13 @@ public class ActivityApplicationLogic {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, true);
 		mData.getActivity().finish();
+		mData.getmTimer().cancel();
 	}
 
 	public void onExitButtonClicked() {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, false);
-		mData.getActivity().finish();	
+		mData.getActivity().finish();
+		mData.getmTimer().cancel();
 	}
 }

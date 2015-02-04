@@ -26,7 +26,7 @@ public class ActivityApplicationLogic {
 		applyDataToGUI();
 		mData.setmQuestion((QuestionDataMultipleAnswer) DatabaseConnection.getFrage(8));
 		setUpLayout();
-		createTimer(mData.getmQuestion().getmTime()).start();
+		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
 	
 	private CountDownTimer createTimer (long time){
@@ -43,7 +43,9 @@ public class ActivityApplicationLogic {
 		    	 }
 
 		     public void onFinish() {
-		         onContinueButtonClicked();
+		 		boolean correct = checkAnswers(mData.getmSelectedAnswer());
+				defineActivityReturnValues(correct, true);
+				mData.getActivity().finish();
 		     }
 		  };
 	}
@@ -146,12 +148,14 @@ public class ActivityApplicationLogic {
 		boolean correct = checkAnswers(mData.getmSelectedAnswer());
 		defineActivityReturnValues(correct, true);
 		mData.getActivity().finish();
+		mData.getmTimer().cancel();
 	}
 
 	public void onExitButtonClicked() {
 		boolean correct = checkAnswers(mData.getmSelectedAnswer());
 		defineActivityReturnValues(correct, false);
 		mData.getActivity().finish();	
+		mData.getmTimer().cancel();
 	}
 
 	

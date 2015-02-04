@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.Toast;
 import de.fhdw.gruppe2.quizapp.android.R;
-import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
@@ -24,9 +23,9 @@ public class ActivityApplicationLogic {
 		mData.setmQuestion((QuestionDataSingleAnswer) DatabaseConnection.getFrage(mData.getmQuestionID()));
 		applyDataToGUI();
 		setUpLayout();
-		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()));
-		mData.getmTimer().start();
+		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
+	
 	private final CountDownTimer createTimer (long time){
 		long runTime=time;
 		
@@ -131,6 +130,7 @@ public class ActivityApplicationLogic {
 		defineActivityReturnValues(correct, false);
 		mData.getmTimer().cancel();
 		mData.getActivity().finish();	
+		mData.getmTimer().cancel();
 	}
 
 	

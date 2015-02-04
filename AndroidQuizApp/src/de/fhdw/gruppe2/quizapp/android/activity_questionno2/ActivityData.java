@@ -4,6 +4,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 
@@ -16,6 +17,7 @@ public class ActivityData {
 	private ActivityInit mActivity;
 	private int mSessionID;
 	private int mQuestionID;
+	private CountDownTimer mTimer;
 	private QuestionDataMultipleAnswer mQuestion;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
@@ -62,8 +64,16 @@ public class ActivityData {
 	public QuestionDataMultipleAnswer getmQuestion() {
 		return mQuestion;
 	}
-	
+	public CountDownTimer getmTimer() {
+		return mTimer;
+	}
+
 	//setter
+	
+	public void setmTimer(CountDownTimer timer) {
+		this.mTimer = timer;
+	}
+	
 	public void setmSessionID(int mSessionID) {
 		this.mSessionID = mSessionID;
 	}
