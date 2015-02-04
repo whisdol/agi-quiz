@@ -23,10 +23,12 @@ public class ActivityApplicationLogic {
 		mData.setmQuestion((QuestionDataSingleAnswer) DatabaseConnection.getFrage(mData.getmQuestionID()));
 		applyDataToGUI();
 		setUpLayout();
-		createTimer(mData.getmQuestion().getmTime()).start();
+		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
+		//createTimer(mData.getmQuestion().getmTime()).start();
 	}
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
+		
 		if (time==-1){
 			runTime=10000;
 		}	
@@ -34,13 +36,16 @@ public class ActivityApplicationLogic {
 		 return new CountDownTimer(runTime, 10) {
 
 		     public void onTick(long millisUntilFinished) {
-		    	 if (10000-millisUntilFinished % 100 == 0){
-		         mGUI.getmBar().setProgress((int) ((10000-millisUntilFinished)/100));
+		    	 long alreadyRunedTime=10000-millisUntilFinished;
+		    	 if (alreadyRunedTime % 100 == 0){
+		         mGUI.getmBar().setProgress((int) (alreadyRunedTime/100));
 		    	 }
 		     }
 
 		     public void onFinish() {
-		         onContinueButtonClicked();
+		    	 boolean correct = evaluateAnswers();
+		 		defineActivityReturnValues(correct, true);
+		 		mData.getActivity().finish();
 		     }
 		  };
 	}
@@ -117,6 +122,7 @@ public class ActivityApplicationLogic {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, true);
 		mData.getActivity().finish();
+		mData.getmTimer().cancel();
 	}
 
 	public void onExitButtonClicked() {

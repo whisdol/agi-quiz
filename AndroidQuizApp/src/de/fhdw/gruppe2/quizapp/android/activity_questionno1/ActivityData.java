@@ -2,6 +2,7 @@ package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
 
@@ -15,6 +16,7 @@ public class ActivityData {
 	private ActivityInit mActivity;
 	private int mSessionID;
 	private int mQuestionID;
+	private CountDownTimer mTimer;
 	private QuestionDataSingleAnswer mQuestion;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
@@ -32,6 +34,7 @@ public class ActivityData {
 	public void saveDataInBundle(Bundle b) {
 		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
+		
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
@@ -59,9 +62,16 @@ public class ActivityData {
 	public QuestionDataSingleAnswer getmQuestion() {
 		return mQuestion;
 	}
+	public CountDownTimer getmTimer() {
+		return mTimer;
+	}
 
 	//setter
 	
+	public void setmTimer(CountDownTimer timer) {
+		this.mTimer = mTimer;
+	}
+
 	public void setmSessionID(int mSessionID) {
 		this.mSessionID = mSessionID;
 	}
