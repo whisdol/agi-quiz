@@ -30,6 +30,11 @@ public class ActivityData {
 		}
 	}
 	
+	public void saveDataInBundle(Bundle b) {
+		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
+		b.putInt(KEY_QUESTION_ID, mQuestionID);	
+	}
+	
 	public void restoreDataFromBundle(Bundle b) {
 		mSelectedAnswer = b.getInt(KEY_SELECTED_ANSWER);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);

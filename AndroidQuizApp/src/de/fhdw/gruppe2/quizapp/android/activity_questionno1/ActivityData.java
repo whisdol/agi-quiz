@@ -33,14 +33,18 @@ public class ActivityData {
 	}
 	
 	public void saveDataInBundle(Bundle b) {
+		System.out.println("Data before save: " + mSelectedAnswer + " & " + mQuestionID);
 		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
 		
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
+		System.out.println("Data before restore: " + mSelectedAnswer + " & " + mQuestionID);
 		mSelectedAnswer = b.getInt(KEY_SELECTED_ANSWER);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);
+		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID);
+		
 	}
 	
 	// getter
