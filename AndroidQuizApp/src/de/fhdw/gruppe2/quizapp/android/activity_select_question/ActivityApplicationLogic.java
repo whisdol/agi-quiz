@@ -29,6 +29,7 @@ public class ActivityApplicationLogic {
         Intent intent;
         intent = new Intent();
         intent.setClass(mData.getActivity(), getClassForQuestionType(pQuestion.getmQuestionType()));
+        intent.putExtra(Constants.INTENT_QUESTION_ID, pQuestion.getmQuestionID());
         mData.getActivity().startActivityForResult(intent, Constants.INTENT_PARAMETER_START_QUESTION_ACTIVITY);
     }
 

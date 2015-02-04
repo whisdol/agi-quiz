@@ -28,6 +28,7 @@ public class DatabaseConnection
        
     public static QuestionData getFrage(int idFrage)
     {
+    	System.out.println("----------idFrage: " + idFrage);
     	//TODO: Cleanup
     	System.out.println("QuestionData getFrage called");
         String sFragenID = "";
@@ -79,13 +80,14 @@ public class DatabaseConnection
         int iFragenID = convertToInt(sFragenID, -1);
         int iZeit = convertToInt(sZeit, 0);
         int iFragenTyp = convertToInt(sFragenTyp, 1);
+        System.out.println(sFragenTyp + " " + iFragenTyp);
         
         QuestionData questionObj;
         questionObj = null;
         
         switch(iFragenTyp){
         case 1:
-        	questionObj = new QuestionDataSingleAnswer(iFragenID,sFragenText,lAntworten,convertToInt(sRichtig,0),iZeit);
+        	questionObj = new QuestionDataSingleAnswer(iFragenID,sFragenText,lAntworten,iZeit);
             break;
         case 2:
         	questionObj = new QuestionDataMultipleAnswer(Integer.parseInt(sFragenID),sFragenText,lAntworten,1,Integer.parseInt(sZeit));
@@ -222,7 +224,7 @@ public class DatabaseConnection
             	userList.add(listString);
             	i++;
                 tmpName = xpath.evaluate("/scoreboard/User/User" + i + "/Name", document);
-                tmpName = xpath.evaluate("/scoreboard/User/User" + i + "/Count", document);
+                tmpScore = xpath.evaluate("/scoreboard/User/User" + i + "/Count", document);
             }
             
             return userList;
