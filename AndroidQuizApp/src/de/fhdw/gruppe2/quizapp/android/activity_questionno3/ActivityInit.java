@@ -40,4 +40,10 @@ public class ActivityInit extends Activity {
 		return this;
 	}
 	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		mData.saveDataInBundle(outState);
+		super.onSaveInstanceState(outState);
+	}
+	
 }

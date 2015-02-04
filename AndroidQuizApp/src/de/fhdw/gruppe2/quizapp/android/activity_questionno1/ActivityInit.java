@@ -35,4 +35,10 @@ public class ActivityInit extends Activity {
 		new ActivityEventToListenerMapping(mGUI, mApplicationLogic);
 	}
 	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		mData.saveDataInBundle(outState);
+		super.onSaveInstanceState(outState);
+	}
+	
 }
