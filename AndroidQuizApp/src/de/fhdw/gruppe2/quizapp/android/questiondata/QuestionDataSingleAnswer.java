@@ -4,8 +4,12 @@ import java.util.List;
 
 public class QuestionDataSingleAnswer extends QuestionData {
 	public QuestionDataSingleAnswer(int pID, String pQuestion, List<AnswerData> pAnswers,
-			int pCorrectAnswer,int pTime) {
-		super(pID, pQuestion, pAnswers, pCorrectAnswer,pTime);
+			int pTime) {
+		super(pID, pQuestion, pAnswers, 0,pTime);
+		for (int i = 0; i<pAnswers.size(); i++){
+			if (pAnswers.get(i).getmRichtig() == 0)
+				setmCorrectAnswer(i);
+		}
 	}
 
 	@Override
