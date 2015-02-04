@@ -1,3 +1,4 @@
+//Author: Bastian Sold
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;

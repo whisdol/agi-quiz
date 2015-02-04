@@ -1,3 +1,4 @@
+//Author: Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.content.Intent;
@@ -68,8 +69,8 @@ public class ActivityData {
 
 	//setter
 	
-	public void setmTimer(CountDownTimer timer) {
-		this.mTimer = mTimer;
+	public void setmTimer(CountDownTimer pTimer) {
+		this.mTimer = pTimer;
 	}
 
 	public void setmSessionID(int mSessionID) {

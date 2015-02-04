@@ -1,3 +1,4 @@
+//Author: Bastian Sold
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import java.io.InputStream;

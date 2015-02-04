@@ -1,3 +1,4 @@
+//Author: Daniel Gnech
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.app.Activity;
@@ -23,10 +24,10 @@ public class ActivityApplicationLogic {
 		mData.setmQuestion((QuestionDataSingleAnswer) DatabaseConnection.getFrage(mData.getmQuestionID()));
 		applyDataToGUI();
 		setUpLayout();
-		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
-		//createTimer(mData.getmQuestion().getmTime()).start();
+		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()));
+		mData.getmTimer().start();
 	}
-	private CountDownTimer createTimer (long time){
+	private final CountDownTimer createTimer (long time){
 		long runTime=time;
 		
 		if (time==-1){
@@ -121,15 +122,15 @@ public class ActivityApplicationLogic {
 	public void onContinueButtonClicked() {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, true);
-		mData.getActivity().finish();
 		mData.getmTimer().cancel();
+		mData.getActivity().finish();
 	}
 
 	public void onExitButtonClicked() {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, false);
-		mData.getActivity().finish();	
 		mData.getmTimer().cancel();
+		mData.getActivity().finish();	
 	}
 
 	

@@ -1,4 +1,4 @@
-// @author Cedric Lüke
+//Author: Kim Gerstein
 package de.fhdw.gruppe2.quizapp.android.activity_questionno5;
 
 import android.content.Context;
