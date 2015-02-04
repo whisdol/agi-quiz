@@ -30,10 +30,13 @@ public class ActivityApplicationLogic {
 		if (time==-1){
 			runTime=10000;
 		}	
+				
 		 return new CountDownTimer(runTime, 10) {
 
 		     public void onTick(long millisUntilFinished) {
-		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
+		    	 if (10000-millisUntilFinished % 100 == 0){
+		         mGUI.getmBar().setProgress((int) ((10000-millisUntilFinished)/100));
+		    	 }
 		     }
 
 		     public void onFinish() {

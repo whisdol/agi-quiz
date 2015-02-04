@@ -34,8 +34,10 @@ public class ActivityApplicationLogic {
 		 return new CountDownTimer(runTime, 10) {
 
 		     public void onTick(long millisUntilFinished) {
-		         mGUI.getmBar().setProgress((int) (10000-millisUntilFinished));
-		     }
+		    	 if (10000-millisUntilFinished % 100 == 0){
+			         mGUI.getmBar().setProgress((int) ((10000-millisUntilFinished)/100));
+			    	 }
+		    	 }
 
 		     public void onFinish() {
 		         onContinueButtonClicked();
