@@ -22,7 +22,7 @@ public class ActivityData {
 		if ( savedInstanceState == null ) {  // no data to restore
 			mSelectedValue = new int[4];
 			for(int i = 0; i<mSelectedValue.length;i++)
-				mSelectedValue[i] = 0;
+				mSelectedValue[i] = 5;
             Intent intent = mActivity.getIntent();
             mQuestionId = intent.getIntExtra(Constants.INTENT_QUESTION_ID, mQuestionId);
 		}

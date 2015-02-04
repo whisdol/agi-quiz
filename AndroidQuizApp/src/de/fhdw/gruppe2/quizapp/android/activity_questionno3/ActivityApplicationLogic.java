@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.Toast;
+import de.fhdw.gruppe2.quizapp.android.R;
 import de.fhdw.gruppe2.quizapp.android.Task.Task;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
@@ -101,10 +102,10 @@ public class ActivityApplicationLogic {
 		String answerstring;
 		boolean correct;
 		if (mData.getmQuestion().isCorrectAnswer(mData.getmSelectedAnswer())){
-			answerstring = "Richtig!";
+			answerstring = mData.getActivity().getString(R.string.question_answered_correctly);
 			correct = true;
 		} else {
-			answerstring = "Falsch!";
+			answerstring = mData.getActivity().getString(R.string.question_answered_incorrectly);
 			correct = false;
 		}
 		Toast.makeText(mData.getActivity().getContext(), answerstring, Toast.LENGTH_SHORT).show();

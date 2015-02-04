@@ -86,12 +86,12 @@ public class ActivityApplicationLogic {
 		for(int i = 0;i<4;i++)
 		{
 			int answer = this.mData.getmSelectedValue()[i];
-			if(answer == -1)
+			if(answer == 5)
 			{
 				return false;
 			}else
 			{
-				selectedAnswers += Math.pow(10, 3-i)*answer;
+				selectedAnswers += Math.pow(10, 3-i)*(answer + 1);
 			}
 		}
 		if (mData.getmQuestion().isCorrectAnswer(selectedAnswers)){
@@ -111,10 +111,10 @@ public class ActivityApplicationLogic {
 		{
 			for(int i = 0;i<4;i++)
 			{
-				if(this.mData.getmSelectedValue()[i] != -1)
+				if(this.mData.getmSelectedValue()[i] == 5)
 				{
 					this.mData.setmSelectedValue(pButton, i);
-					this.mGUI.getmAnswerButton()[i].setBackgroundColor(Color.rgb(0, 105+50*i, 255));
+					this.mGUI.getmAnswerButton()[pButton].setBackgroundColor(Color.rgb(0, 105+50*i, 255));
 					break;
 				}
 			}
@@ -122,10 +122,10 @@ public class ActivityApplicationLogic {
 		{
 			for(int i = 3;i>-1;i--)
 			{
-				if(this.mData.getmSelectedValue()[i] != -1)
+				if(this.mData.getmSelectedValue()[i] != 5)
 				{
-					this.mData.setmSelectedValue(-1, i);
-					this.mGUI.getmAnswerButton()[i].setBackgroundColor(Color.GRAY);
+					this.mData.setmSelectedValue(5, i);
+					this.mGUI.getmAnswerButton()[pButton].setBackgroundColor(Color.GRAY);
 					break;
 				}
 			}

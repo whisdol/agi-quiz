@@ -1,12 +1,9 @@
 // @author Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_questionno5;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Button;
 
 public class ActivityEventToListenerMapping implements OnClickListener {
 
@@ -19,6 +16,10 @@ public class ActivityEventToListenerMapping implements OnClickListener {
 		
 		mGUI.getmContinueButton().setOnClickListener(this);
 		mGUI.getmExitButton().setOnClickListener(this);
+		for(Button  b: mGUI.getmAnswerButton())
+		{
+			b.setOnClickListener(this);
+		}
 		
 	}
 

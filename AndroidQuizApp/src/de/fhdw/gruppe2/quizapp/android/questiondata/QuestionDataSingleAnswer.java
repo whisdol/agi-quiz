@@ -7,7 +7,7 @@ public class QuestionDataSingleAnswer extends QuestionData {
 			int pTime) {
 		super(pID, pQuestion, pAnswers, 0,pTime);
 		for (int i = 0; i<pAnswers.size(); i++){
-			if (pAnswers.get(i).getmRichtig() == 0)
+			if (pAnswers.get(i).getmRichtig() == 1)
 				setmCorrectAnswer(i);
 		}
 	}
