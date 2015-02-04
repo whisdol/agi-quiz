@@ -43,7 +43,7 @@ public class ActivityApplicationLogic {
 		     }
 
 		     public void onFinish() {
-		    	 boolean correct = evaluateAnswers();
+		    	boolean correct = evaluateAnswers();
 		 		defineActivityReturnValues(correct, true);
 		 		mData.getActivity().finish();
 		     }
@@ -129,6 +129,7 @@ public class ActivityApplicationLogic {
 		boolean correct = evaluateAnswers();
 		defineActivityReturnValues(correct, false);
 		mData.getActivity().finish();	
+		mData.getmTimer().cancel();
 	}
 
 	
