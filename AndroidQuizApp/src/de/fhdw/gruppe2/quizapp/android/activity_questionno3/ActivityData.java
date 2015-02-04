@@ -4,6 +4,7 @@ import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataWithPicture;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 
 public class ActivityData {
 	private final String KEY_SELECTED_ANSWER = "K3_1";
@@ -14,7 +15,8 @@ public class ActivityData {
 	private ActivityInit mActivity;
 	private int mSessionID;
 	private int mQuestionID;
-
+	private CountDownTimer mTimer;
+	
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mSelectedAnswer = -1;
 		mActivity = act;
@@ -49,8 +51,14 @@ public class ActivityData {
 	public int getmSelectedAnswer() {
 		return mSelectedAnswer;
 	}
+	public CountDownTimer getmTimer() {
+		return mTimer;
+	}
 
 	//setter
+	public void setmTimer(CountDownTimer timer) {
+		this.mTimer = timer;
+	}
 	public void setmSessionID(int mSessionID) {
 		this.mSessionID = mSessionID;
 	}
