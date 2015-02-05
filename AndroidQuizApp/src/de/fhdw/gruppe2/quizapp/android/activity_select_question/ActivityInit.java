@@ -32,4 +32,10 @@ public class ActivityInit extends Activity {
 		mApplicationLogic.processActivityReturnValues(requestCode, resultCode, data);
 	}
 	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		mData.saveDataInBundle(outState);
+		super.onSaveInstanceState(outState);
+	}
+	
 }
