@@ -26,18 +26,21 @@ public class ActivityApplicationLogic {
 		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
 	
-	private final CountDownTimer createTimer (long time){
+	private CountDownTimer createTimer (long time){
 		long runTime=time;
 		
 		if (time==-1){
 			runTime=10000;
-		}		
-		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()));
-		 return new CountDownTimer(runTime, 10) {		 
-		     public void onTick(long millisUntilFinished) {		    	 
-		    	 mData.setmAlreadyRunnedTime(10000-millisUntilFinished);
+		}
+		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
+		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		final long runBeforeStart=mData.getmAlreadyRunnedTime()/100;
+		 return new CountDownTimer(newrunTime, 10) {		 
+		     public void onTick(long millisUntilFinished) {	
+		    	 
+		    	 mData.setmAlreadyRunnedTime(newrunTime+runBeforeStart-millisUntilFinished);
 		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
-		         mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		         mGUI.getmBar().setProgress((int) ((runBeforeStart+mData.getmAlreadyRunnedTime())/100));
 		    	 }
 		     }
 
