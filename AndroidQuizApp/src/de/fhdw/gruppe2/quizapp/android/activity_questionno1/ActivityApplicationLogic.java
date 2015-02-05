@@ -64,6 +64,23 @@ public class ActivityApplicationLogic {
 		this.mGUI.getmAnswerButton1().setText(q.getAnswers().get(1));
 		this.mGUI.getmAnswerButton2().setText(q.getAnswers().get(2));
 		this.mGUI.getmAnswerButton3().setText(q.getAnswers().get(3));
+		
+		switch(mData.getmSelectedAnswer()){
+		default:
+			break;
+		case 0:
+			mGUI.changeButtonColor(this.mGUI.getmAnswerButton0(),Color.BLUE);
+			break;
+		case 1:
+			mGUI.changeButtonColor(this.mGUI.getmAnswerButton1(),Color.BLUE);
+			break;
+		case 2:
+			mGUI.changeButtonColor(this.mGUI.getmAnswerButton2(),Color.BLUE);
+			break;
+		case 3:
+			mGUI.changeButtonColor(this.mGUI.getmAnswerButton3(),Color.BLUE);
+			break;
+		}
 	}
 	
 	private boolean evaluateAnswers(){
