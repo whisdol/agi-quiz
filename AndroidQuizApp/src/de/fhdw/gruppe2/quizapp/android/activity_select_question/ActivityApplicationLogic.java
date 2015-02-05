@@ -21,8 +21,15 @@ public class ActivityApplicationLogic {
 		this.mData = mData;
 		setUserDetails();
 		getSession();
+		removeAnsweredQuestions();
 		startQuestionActivity(mData.getmSession().getAndRemoveQuestion());
 		
+	}
+	
+	public void removeAnsweredQuestions(){
+		for (int i = 0; i<mData.getmAnsweredQuestions(); i++){
+			mData.getmSession().getAndRemoveQuestion();
+		}
 	}
 	
     public void startQuestionActivity(QSessionQuestion pQuestion){
