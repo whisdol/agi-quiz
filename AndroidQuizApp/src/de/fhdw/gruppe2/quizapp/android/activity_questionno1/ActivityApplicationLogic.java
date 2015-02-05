@@ -31,14 +31,13 @@ public class ActivityApplicationLogic {
 		
 		if (time==-1){
 			runTime=10000;
-		}	
-				
-		 return new CountDownTimer(runTime, 10) {
-
-		     public void onTick(long millisUntilFinished) {
-		    	 long alreadyRunedTime=10000-millisUntilFinished;
-		    	 if (alreadyRunedTime % 100 == 0){
-		         mGUI.getmBar().setProgress((int) (alreadyRunedTime/100));
+		}		
+		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()));
+		 return new CountDownTimer(runTime, 10) {		 
+		     public void onTick(long millisUntilFinished) {		    	 
+		    	 mData.setmAlreadyRunnedTime(10000-millisUntilFinished);
+		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
+		         mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
 		    	 }
 		     }
 

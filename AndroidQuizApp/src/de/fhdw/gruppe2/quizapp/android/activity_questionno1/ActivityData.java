@@ -11,6 +11,7 @@ public class ActivityData {
 	
 	private final String KEY_SELECTED_ANSWER = "K1_1";
 	private final String KEY_QUESTION_ID = "K1_2";
+	private final String KEY_ALREADY_RUNNED_TIME = "K1_3";
 	
 	private int mSelectedAnswer;
 
@@ -19,11 +20,13 @@ public class ActivityData {
 	private int mQuestionID;
 	private CountDownTimer mTimer;
 	private QuestionDataSingleAnswer mQuestion;
+	private long mAlreadyRunnedTime;
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mActivity = act;
 		if ( savedInstanceState == null ) {  // no data to restore
 			mSelectedAnswer = -1;
+			mAlreadyRunnedTime=0;
             Intent intent = mActivity.getIntent();
             mQuestionID = intent.getIntExtra(Constants.INTENT_QUESTION_ID, mQuestionID);
 		}
@@ -36,6 +39,7 @@ public class ActivityData {
 		System.out.println("Data before save: " + mSelectedAnswer + " & " + mQuestionID);
 		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
+		b.putLong(KEY_ALREADY_RUNNED_TIME, mAlreadyRunnedTime);
 		mTimer.cancel();
 	}
 	
@@ -43,6 +47,7 @@ public class ActivityData {
 		System.out.println("Data before restore: " + mSelectedAnswer + " & " + mQuestionID);
 		mSelectedAnswer = b.getInt(KEY_SELECTED_ANSWER);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);
+		mAlreadyRunnedTime = b.getLong(KEY_ALREADY_RUNNED_TIME);
 		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID);
 		
 	}
@@ -70,8 +75,15 @@ public class ActivityData {
 	public CountDownTimer getmTimer() {
 		return mTimer;
 	}
+	public long getmAlreadyRunnedTime() {
+		return mAlreadyRunnedTime;
+	}
 
 	//setter
+	public void setmAlreadyRunnedTime(long mAlreadyRunnedTime) {
+		this.mAlreadyRunnedTime = mAlreadyRunnedTime;
+	}
+
 	public void setmTimer(CountDownTimer pTimer) {
 		this.mTimer = pTimer;
 	}
