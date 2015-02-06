@@ -62,6 +62,16 @@ public class ActivityData {
 		return mSelectedAnswer;
 	}
 	
+	public String getmSelectedAnswers() {
+		String sReturn = "";
+		for(boolean b:mSelectedAnswer)
+		{
+			sReturn += (b)?1:0;
+		}
+		
+		return sReturn;
+	}
+	
 	public QuestionDataMultipleAnswer getmQuestion() {
 		return mQuestion;
 	}

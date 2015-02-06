@@ -21,15 +21,9 @@ public class ActivityApplicationLogic {
 		this.mData = mData;
 		setUserDetails();
 		getSession();
-		removeAnsweredQuestions();
+		mData.getmSession().RemoveAnsweredQuestions();
 		startQuestionActivity(mData.getmSession().getAndRemoveQuestion());
 		
-	}
-	
-	public void removeAnsweredQuestions(){
-		for (int i = 0; i<mData.getmAnsweredQuestions(); i++){
-			mData.getmSession().getAndRemoveQuestion();
-		}
 	}
 	
     public void startQuestionActivity(QSessionQuestion pQuestion){
@@ -49,14 +43,14 @@ public class ActivityApplicationLogic {
                 	String answer = data.getExtras().getString(Constants.INTENT_ANSWER);
                 	int qid = data.getExtras().getInt(Constants.INTENT_ANSWER_QID);
                 	
-                	// TODO: Save Result (Question answered correctly, not correctly) in the db
                 	DatabaseConnection.updateSessionFrage(mData.getmSession().getmSessionID(), qid, (correctlyAnswered) ? 1:-1, answer);
                 	
                 	QSessionQuestion nextQuestion = mData.getmSession().getAndRemoveQuestion();
                 
-                	if (cont && nextQuestion != null){
+                	if (cont && (nextQuestion != null)){
                 		startQuestionActivity(nextQuestion);
                 	} else {
+                		getSession();
                 		Intent intent;
                         intent = new Intent();
                         intent.setClass(mData.getActivity(), Constants.ACTIVITY_MENU_CLASS);
@@ -101,5 +95,6 @@ public class ActivityApplicationLogic {
 	private void getSession(){
 		QSession session = DatabaseConnection.getSession(mData.getmUserId());
 		mData.setmSession(session);
+		int i = 0;
 	}
 }

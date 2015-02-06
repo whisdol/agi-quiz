@@ -1,14 +1,8 @@
 package de.fhdw.gruppe2.quizapp.android.dbconnection;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 
@@ -159,19 +153,22 @@ public class DatabaseConnection
             String sSessionID;
             String sTempQuestionID;
             String sTempQuestionType;
+            String sRichtig;
             List<QSessionQuestion> questions = new ArrayList<QSessionQuestion>();
             
             
             sSessionID = xpath.evaluate("/session_info/sessionID", document);
             sTempQuestionID = xpath.evaluate("/session_info/fragen/Frage0/idFrage", document);
             sTempQuestionType = xpath.evaluate("/session_info/fragen/Frage0/Fragentyp", document);
+            sRichtig = xpath.evaluate("/session_info/fragen/Frage0/richtig", document);
             int i = 0;
             while(sTempQuestionID != "")
             {
-            	questions.add(new QSessionQuestion(convertToInt(sTempQuestionID, 0), convertToInt(sTempQuestionType, 0)));
+            	questions.add(new QSessionQuestion(convertToInt(sTempQuestionID, 0), convertToInt(sTempQuestionType, 0),convertToInt(sRichtig, 0)));
                 i++;
                 sTempQuestionID = xpath.evaluate("/session_info/fragen/Frage" + i + "/idFrage", document);
                 sTempQuestionType = xpath.evaluate("/session_info/fragen/Frage" + i + "/Fragentyp", document);
+                sRichtig = xpath.evaluate("/session_info/fragen/Frage" + i + "/richtig", document);
             }
             
             return new QSession(convertToInt(sSessionID, -1), questions);
@@ -190,6 +187,7 @@ public class DatabaseConnection
     {
         try
         {
+        	System.out.print("http://a-o-w.lima-city.de/QuizApp/UpdateSessionFrage.php?sessionID=" + pSessionID + "&fragenID=" + pFragenID + "&richtig=" + pRichtig + "&antwort=" + pAntwort);
             HandleXML parsedXMLobj = new HandleXML("http://a-o-w.lima-city.de/QuizApp/UpdateSessionFrage.php?sessionID=" + pSessionID + "&fragenID=" + pFragenID + "&richtig=" + pRichtig + "&antwort=" + pAntwort );
             parsedXMLobj.fetchXML();
         }catch(Exception e)

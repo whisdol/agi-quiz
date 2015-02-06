@@ -38,5 +38,16 @@ public class QSession {
 			mQuestions.remove(0);
 		}
 		return retQuestion;
-	} 
+	}
+	
+	public void RemoveAnsweredQuestions()
+	{
+		for(int i = 0;i<mQuestions.size();i++)
+		{
+			if(mQuestions.get(i).getmAnswered() != 0)
+			{
+				mQuestions.remove(i);
+			}
+		}
+	}
 }

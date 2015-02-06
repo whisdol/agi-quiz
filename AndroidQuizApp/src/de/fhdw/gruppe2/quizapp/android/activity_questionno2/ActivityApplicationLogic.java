@@ -12,6 +12,7 @@ import de.fhdw.gruppe2.quizapp.android.R;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
+import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
 
 
 
@@ -24,7 +25,7 @@ public class ActivityApplicationLogic {
 		this.mData = mData;
 		this.mGUI = mGUI;
 		applyDataToGUI();
-		mData.setmQuestion((QuestionDataMultipleAnswer) DatabaseConnection.getFrage(8));
+		mData.setmQuestion((QuestionDataMultipleAnswer)  DatabaseConnection.getFrage(mData.getmQuestionID()));
 		setUpLayout();
 		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
@@ -139,7 +140,7 @@ public class ActivityApplicationLogic {
         intent = new Intent();
         intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
         intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
-        intent.putExtra(Constants.INTENT_ANSWER, Arrays.toString(this.mData.getmSelectedAnswer()));
+        intent.putExtra(Constants.INTENT_ANSWER, this.mData.getmSelectedAnswers());
         intent.putExtra(Constants.INTENT_ANSWER_QID, mData.getmQuestionID());
         mData.getActivity().setResult(Activity.RESULT_OK, intent);
 	}

@@ -26,7 +26,7 @@ public class ActivityApplicationLogic {
 		Intent intent;
 		intent = new Intent();
 		intent.setClass(mData.getActivity(), Constants.ACTIVITYMENUCLASS);
-		mData.getActivity().startActivityForResult(intent, Constants.REQUESTCODEVALUE);
+		mData.getActivity().startActivity(intent);
 		
 	}
 
