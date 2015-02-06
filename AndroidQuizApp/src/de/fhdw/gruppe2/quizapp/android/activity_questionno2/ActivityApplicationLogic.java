@@ -3,18 +3,14 @@
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
 
-import android.os.CountDownTimer;
-import java.util.Arrays;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.widget.Toast;
 import de.fhdw.gruppe2.quizapp.android.R;
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;
 import de.fhdw.gruppe2.quizapp.android.dbconnection.DatabaseConnection;
 import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
-import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataSingleAnswer;
-
-
 
 public class ActivityApplicationLogic {
 

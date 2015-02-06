@@ -134,7 +134,7 @@ public class ActivityApplicationLogic {
         intent = new Intent();
         intent.putExtra(Constants.INTENT_ANSWER_CORRECT, correct);
         intent.putExtra(Constants.INTENT_ANSWER_CONTINUE, continueOrExit);
-        intent.putExtra(Constants.INTENT_ANSWER, this.mData.getmSelectedAnswer());
+        intent.putExtra(Constants.INTENT_ANSWER, Integer.toString(this.mData.getmSelectedAnswer()));
         intent.putExtra(Constants.INTENT_ANSWER_QID, mData.getmQuestionID());
         mData.getActivity().setResult(Activity.RESULT_OK, intent);
 	}
