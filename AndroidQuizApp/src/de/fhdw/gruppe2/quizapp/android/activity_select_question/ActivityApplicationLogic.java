@@ -54,8 +54,10 @@ public class ActivityApplicationLogic {
                 		Intent intent;
                         intent = new Intent();
                         intent.setClass(mData.getActivity(), Constants.ACTIVITY_MENU_CLASS);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); 
                         mData.getActivity().startActivity(intent);
-                		
+                        mData.getActivity().finish();
+                        return;
                 	}
                     break;
             }
