@@ -28,23 +28,24 @@ public class ActivityApplicationLogic {
 	
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
-		
 		if (time==-1){
 			runTime=10000;
 		}
 		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
 		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
-		final long runBeforeStart=mData.getmAlreadyRunnedTime()/100;
-		 return new CountDownTimer(newrunTime, 10) {		 
+		System.out.println("Datazz: pgbar wert "+ newrunTime);
+		return new CountDownTimer(newrunTime, 10) {	
+
 		     public void onTick(long millisUntilFinished) {	
-		    	 
-		    	 mData.setmAlreadyRunnedTime(newrunTime+runBeforeStart-millisUntilFinished);
+		    	 System.out.println("Datazz: gelaufen "+ mData.getmAlreadyRunnedTime()+ " nochübrig " + millisUntilFinished);
+		    	 mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +10 );
 		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
-		         mGUI.getmBar().setProgress((int) ((runBeforeStart+mData.getmAlreadyRunnedTime())/100));
+		    		 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & " + millisUntilFinished);
+		    		 mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
 		    	 }
 		     }
-
 		     public void onFinish() {
+		    	 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & "); 
 		    	boolean correct = evaluateAnswers();
 		 		defineActivityReturnValues(correct, true);
 		 		mData.getActivity().finish();

@@ -48,7 +48,7 @@ public class ActivityData {
 		mSelectedAnswer = b.getInt(KEY_SELECTED_ANSWER);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);
 		mAlreadyRunnedTime = b.getLong(KEY_ALREADY_RUNNED_TIME);
-		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID);	
+		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID + " & " + mAlreadyRunnedTime);	
 	}
 	
 	// getter
