@@ -172,6 +172,8 @@ public class DatabaseConnection
                 sRichtig = xpath.evaluate("/session_info/fragen/Frage" + i + "/richtig", document);
             }
             
+            System.out.println("ID from database: " + sSessionID);
+            
             return new QSession(convertToInt(sSessionID, -1), questions);
             
             

@@ -96,6 +96,7 @@ public class ActivityApplicationLogic {
     
 	private void getSession(){
 		QSession session = DatabaseConnection.getSession(mData.getmUserId());
+		System.out.println("ID: " + session.getmSessionID());
 		mData.setmSession(session);
 	}
 }

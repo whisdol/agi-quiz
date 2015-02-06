@@ -43,6 +43,7 @@ public class HandleXML {
 					conn.setConnectTimeout(15000 /* milliseconds */);
 					conn.setRequestMethod("GET");
 					conn.setDoInput(true);
+					conn.setRequestProperty("Cache-Control", "no-cache");
 					conn.connect();
 					InputStream stream = conn.getInputStream();
 
