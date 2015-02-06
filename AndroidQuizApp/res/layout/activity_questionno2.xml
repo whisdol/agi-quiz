@@ -43,12 +43,12 @@
 	    </ProgressBar>
        
         <CheckBox
-        	android:id="@+id/question2_check1"
-        	android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_marginLeft="@dimen/activity_vertical_margin"
-        	android:padding="@dimen/activity_horizontal_margin"
-        	android:text="Esel" />
+            android:id="@+id/question2_check1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="Filler" />
 
     	<CheckBox
 		    android:id="@+id/question2_check2"
@@ -59,12 +59,12 @@
 		    android:text="FILLERCheckBox" />
 
     	<CheckBox
-		    android:id="@+id/question2_check3"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="@dimen/activity_vertical_margin"
-		    android:padding="@dimen/activity_horizontal_margin"
-		    android:text="Esel" />
+    	    android:id="@+id/question2_check3"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="@dimen/activity_vertical_margin"
+    	    android:padding="@dimen/activity_horizontal_margin"
+    	    android:text="Filler" />
 
     	<CheckBox
 		    android:id="@+id/question2_check4"
