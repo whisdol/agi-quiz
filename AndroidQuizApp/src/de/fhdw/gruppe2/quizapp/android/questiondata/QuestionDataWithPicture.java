@@ -1,3 +1,4 @@
+//Author: Bastian Sold
 package de.fhdw.gruppe2.quizapp.android.questiondata;
 
 import java.util.List;
