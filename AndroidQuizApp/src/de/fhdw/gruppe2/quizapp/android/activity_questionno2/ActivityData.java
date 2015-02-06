@@ -12,6 +12,7 @@ import de.fhdw.gruppe2.quizapp.android.questiondata.QuestionDataMultipleAnswer;
 public class ActivityData {
 	private final String KEY_SELECTED_ANSWERS = "K2_1";
 	private final String KEY_QUESTION_ID = "K2_2";
+	private final String KEY_ALREADY_RUNNED_TIME = "K1_3";
 	
 	private boolean[] mSelectedAnswer;
 	private ActivityInit mActivity;
@@ -19,12 +20,16 @@ public class ActivityData {
 	private int mQuestionID;
 	private CountDownTimer mTimer;
 	private QuestionDataMultipleAnswer mQuestion;
+	private long mAlreadyRunnedTime;
+
+
 
 	public ActivityData (Bundle savedInstanceState, ActivityInit act) {
 		mActivity = act;
 		// new instance
 		if ( savedInstanceState == null ) {  
 			mSelectedAnswer = new boolean[4];
+			mAlreadyRunnedTime=0;
             Intent intent = mActivity.getIntent();
             mQuestionID = intent.getIntExtra(Constants.INTENT_QUESTION_ID, mQuestionID);
 		}
@@ -38,12 +43,14 @@ public class ActivityData {
 	public void saveDataInBundle(Bundle b) {
 		b.putBooleanArray(KEY_SELECTED_ANSWERS, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
+		b.putLong(KEY_ALREADY_RUNNED_TIME, mAlreadyRunnedTime);
 		mTimer.cancel();
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
 		mSelectedAnswer = b.getBooleanArray(KEY_SELECTED_ANSWERS);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);
+		mAlreadyRunnedTime = b.getLong(KEY_ALREADY_RUNNED_TIME);
 	}
 	
 	// getter
@@ -68,9 +75,15 @@ public class ActivityData {
 	public CountDownTimer getmTimer() {
 		return mTimer;
 	}
+	public long getmAlreadyRunnedTime() {
+		return mAlreadyRunnedTime;
+	}
+
 
 	//setter
-	
+	public void setmAlreadyRunnedTime(long mAlreadyRunnedTime) {
+		this.mAlreadyRunnedTime = mAlreadyRunnedTime;
+	}
 	public void setmTimer(CountDownTimer timer) {
 		this.mTimer = timer;
 	}

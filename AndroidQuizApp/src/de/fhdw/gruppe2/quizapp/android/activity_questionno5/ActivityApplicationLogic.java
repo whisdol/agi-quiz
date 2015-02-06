@@ -29,19 +29,21 @@ public class ActivityApplicationLogic {
 		long runTime=time;
 		if (time==-1){
 			runTime=10000;
-		}	
-		 return new CountDownTimer(runTime, 10) {
+		}
+		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
+		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		return new CountDownTimer(newrunTime, 10) {	
 
-		     public void onTick(long millisUntilFinished) {
-		    	 if ((10000-millisUntilFinished) % 100 == 0){
-			         mGUI.getmBar().setProgress((int) ((10000-millisUntilFinished)/100));
-			    	 }
+		     public void onTick(long millisUntilFinished) {			    	 
+		    	 mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +10 );
+		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
+		    	 mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
 		    	 }
-
+		     }
 		     public void onFinish() {
-		 		boolean correct = evaluateAnswers();
-				defineActivityReturnValues(correct, true);
-				mData.getActivity().finish();
+		    	boolean correct = evaluateAnswers();
+		 		defineActivityReturnValues(correct, true);
+		 		mData.getActivity().finish();
 		     }
 		  };
 	}

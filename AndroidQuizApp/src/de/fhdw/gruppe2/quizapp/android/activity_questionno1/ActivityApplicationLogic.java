@@ -26,22 +26,26 @@ public class ActivityApplicationLogic {
 		mData.setmTimer(createTimer(mData.getmQuestion().getmTime()).start());
 	}
 	
-	private final CountDownTimer createTimer (long time){
+	private CountDownTimer createTimer (long time){
 		long runTime=time;
-		
 		if (time==-1){
 			runTime=10000;
-		}		
-		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()));
-		 return new CountDownTimer(runTime, 10) {		 
-		     public void onTick(long millisUntilFinished) {		    	 
-		    	 mData.setmAlreadyRunnedTime(10000-millisUntilFinished);
+		}
+		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
+		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		System.out.println("Datazz: pgbar wert "+ newrunTime);
+		return new CountDownTimer(newrunTime, 10) {	
+
+		     public void onTick(long millisUntilFinished) {	
+		    	 System.out.println("Datazz: gelaufen "+ mData.getmAlreadyRunnedTime()+ " nochübrig " + millisUntilFinished);
+		    	 mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +10 );
 		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
-		         mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		    		 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & " + millisUntilFinished);
+		    		 mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
 		    	 }
 		     }
-
 		     public void onFinish() {
+		    	 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & "); 
 		    	boolean correct = evaluateAnswers();
 		 		defineActivityReturnValues(correct, true);
 		 		mData.getActivity().finish();
