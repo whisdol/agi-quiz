@@ -1,4 +1,4 @@
-//Author: Kim Gerstein
+//Author: Kim Gerstein & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno5;
 
 import de.fhdw.gruppe2.quizapp.android.R;
@@ -28,20 +28,21 @@ public class ActivityApplicationLogic {
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
 		if (time==-1){
-			runTime=10000;
-		}	
-		 return new CountDownTimer(runTime, 10) {
+			runTime=10500; //10 sec + 0,5 sec deviation tolerance
+		}
+		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
+		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
+		return new CountDownTimer(newrunTime, 100) {	
 
-		     public void onTick(long millisUntilFinished) {
-		    	 if ((10000-millisUntilFinished) % 100 == 0){
-			         mGUI.getmBar().setProgress((int) ((10000-millisUntilFinished)/100));
-			    	 }
-		    	 }
+		     public void onTick(long millisUntilFinished) {			    	 
+		    	 mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +100 );
+		    	 mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
 
+		     }
 		     public void onFinish() {
-		 		boolean correct = evaluateAnswers();
-				defineActivityReturnValues(correct, true);
-				mData.getActivity().finish();
+		    	boolean correct = evaluateAnswers();
+		 		defineActivityReturnValues(correct, true);
+		 		mData.getActivity().finish();
 		     }
 		  };
 	}

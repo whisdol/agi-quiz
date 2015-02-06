@@ -1,4 +1,4 @@
-//Author: Daniel Gnech
+//Author: Daniel Gnech & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.content.Intent;
@@ -36,7 +36,7 @@ public class ActivityData {
 	}
 	
 	public void saveDataInBundle(Bundle b) {
-		System.out.println("Data before save: " + mSelectedAnswer + " & " + mQuestionID);
+		System.out.println("Data before save: " + mSelectedAnswer + " & " + mQuestionID+ " & "+ mAlreadyRunnedTime);
 		b.putInt(KEY_SELECTED_ANSWER, mSelectedAnswer);
 		b.putInt(KEY_QUESTION_ID, mQuestionID);
 		b.putLong(KEY_ALREADY_RUNNED_TIME, mAlreadyRunnedTime);
@@ -44,12 +44,11 @@ public class ActivityData {
 	}
 	
 	public void restoreDataFromBundle(Bundle b) {
-		System.out.println("Data before restore: " + mSelectedAnswer + " & " + mQuestionID);
+		System.out.println("Data before restore: " + mSelectedAnswer + " & " + mQuestionID + " & " + mAlreadyRunnedTime);
 		mSelectedAnswer = b.getInt(KEY_SELECTED_ANSWER);
 		mQuestionID = b.getInt(KEY_QUESTION_ID);
 		mAlreadyRunnedTime = b.getLong(KEY_ALREADY_RUNNED_TIME);
-		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID);
-		
+		System.out.println("Data after restore: " + mSelectedAnswer + " & " + mQuestionID + " & " + mAlreadyRunnedTime);	
 	}
 	
 	// getter
