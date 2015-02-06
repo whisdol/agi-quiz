@@ -1,11 +1,8 @@
 //Author: Kim Gerstein
 package de.fhdw.gruppe2.quizapp.android.activity_questionno5;
 
-import android.content.Context;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import de.fhdw.gruppe2.quizapp.android.R;
 

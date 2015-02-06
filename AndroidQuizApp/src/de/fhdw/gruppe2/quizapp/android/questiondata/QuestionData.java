@@ -1,7 +1,7 @@
+// @author Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.questiondata;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class QuestionData /* implements Parcelable */ {

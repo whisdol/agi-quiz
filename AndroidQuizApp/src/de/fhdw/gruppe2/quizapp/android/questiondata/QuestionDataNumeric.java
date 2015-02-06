@@ -1,8 +1,7 @@
-// @author Cedric Lüke
+// @author Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.questiondata;
 
 import java.util.List;
-import java.util.Set;
 
 public class QuestionDataNumeric extends QuestionData {
 	

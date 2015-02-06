@@ -1,7 +1,6 @@
 // @author Cedric Lüke
 package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
-import android.content.Context;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;

@@ -1,3 +1,4 @@
+// @ author Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.dbconnection;
 
 public class QSessionQuestion {

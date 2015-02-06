@@ -2,7 +2,6 @@
 package de.fhdw.gruppe2.quizapp.android.activity_select_question;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 

@@ -1,3 +1,4 @@
+// @ author Daniel Gnech, Ben Schulze, Alexander Frese, Bastian Sold, Kim Gerstein Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.constants;
 
 public class Constants {

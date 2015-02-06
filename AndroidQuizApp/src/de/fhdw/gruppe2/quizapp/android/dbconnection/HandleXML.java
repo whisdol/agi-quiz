@@ -1,4 +1,5 @@
 /**
+ * @ author Cedric Lüke
  * Inspired by: http://www.tutorialspoint.com/android/android_xml_parsers.htm
  */
 package de.fhdw.gruppe2.quizapp.android.dbconnection;

@@ -1,3 +1,4 @@
+// @author Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.questiondata;
 
 public class AnswerData {

@@ -1,3 +1,4 @@
+// @author Cedric Lueke
 package de.fhdw.gruppe2.quizapp.android.dbconnection;
 
 import java.util.List;
