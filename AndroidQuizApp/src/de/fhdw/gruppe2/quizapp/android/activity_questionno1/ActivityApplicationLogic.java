@@ -1,4 +1,4 @@
-//Author: Daniel Gnech
+//Author: Daniel Gnech & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.app.Activity;
@@ -29,23 +29,18 @@ public class ActivityApplicationLogic {
 	private CountDownTimer createTimer (long time){
 		long runTime=time;
 		if (time==-1){
-			runTime=10000;
+			runTime=10500; //10 sec + 0,5 sec deviation tolerance
 		}
 		final long newrunTime=runTime-mData.getmAlreadyRunnedTime();
 		mGUI.getmBar().setProgress((int) (mData.getmAlreadyRunnedTime()/100));
 		System.out.println("Datazz: pgbar wert "+ newrunTime);
-		return new CountDownTimer(newrunTime, 10) {	
+		return new CountDownTimer(newrunTime, 100) {	
 
 		     public void onTick(long millisUntilFinished) {	
-		    	 System.out.println("Datazz: gelaufen "+ mData.getmAlreadyRunnedTime()+ " nochübrig " + millisUntilFinished);
-		    	 mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +10 );
-		    	 if (mData.getmAlreadyRunnedTime() % 100 == 0){
-		    		 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & " + millisUntilFinished);
-		    		 mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
-		    	 }
+		    	mData.setmAlreadyRunnedTime( mData.getmAlreadyRunnedTime() +100 );
+		    	mGUI.getmBar().setProgress((int) ((mData.getmAlreadyRunnedTime())/100));
 		     }
 		     public void onFinish() {
-		    	 System.out.println("Datazz: pgbar wert "+ (int) ((mData.getmAlreadyRunnedTime())/100)+ " & "); 
 		    	boolean correct = evaluateAnswers();
 		 		defineActivityReturnValues(correct, true);
 		 		mData.getActivity().finish();

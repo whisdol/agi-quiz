@@ -1,4 +1,4 @@
-//Author: Daniel Gnech
+//Author: Daniel Gnech & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno1;
 
 import android.content.Intent;

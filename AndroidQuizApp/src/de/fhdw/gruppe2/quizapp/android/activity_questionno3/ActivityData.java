@@ -1,4 +1,4 @@
-//Author: Bastian Sold
+//Author: Bastian Sold & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno3;
 
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;

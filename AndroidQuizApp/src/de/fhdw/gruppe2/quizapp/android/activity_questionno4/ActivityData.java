@@ -1,4 +1,4 @@
-// @author Cedric Lüke
+// @author Cedric Lüke & Ben Schulze
 package de.fhdw.gruppe2.quizapp.android.activity_questionno4;
 
 import de.fhdw.gruppe2.quizapp.android.constants.Constants;

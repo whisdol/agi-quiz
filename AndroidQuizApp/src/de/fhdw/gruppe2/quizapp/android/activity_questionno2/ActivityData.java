@@ -1,4 +1,4 @@
-// @author Alexander Frese
+// @author Alexander Frese & Ben Schulze
  
 package de.fhdw.gruppe2.quizapp.android.activity_questionno2;
 
